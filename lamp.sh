@@ -11,7 +11,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # Make projects directory and structure
 WEB_ROOT=$HOME'/Projects/php/apps'
 mkdir -p $WEB_ROOT
-echo "<?php phpinfo();" >> $WEB_ROOT/index.php
+echo "<?php phpinfo();" > $WEB_ROOT/index.php
 
 # Install PHP
 brew tap homebrew/homebrew-php
@@ -28,9 +28,8 @@ touch /usr/local/lib/libphp5.so
 
 # Update http conf
 ## Fetch new default if not exists
-if [ ! -f /etc/apache2/httpd.conf.default ]; then
-    curl -o /etc/apache2/httpd.conf.default https://raw.githubusercontent.com/stevenmaguire/apache2-conf-osx/master/10.10/httpd.conf.default
-fi
+curl -o /etc/apache2/httpd.conf.default https://raw.githubusercontent.com/stevenmaguire/apache2-conf-osx/master/10.10/httpd.conf.default
+
 ## Replace current with default
 cp /etc/apache2/httpd.conf.default /etc/apache2/httpd.conf
 
