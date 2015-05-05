@@ -29,7 +29,7 @@ fi
 cp /etc/apache2/httpd.conf.default /etc/apache2/httpd.conf
 
 sed -i ".original" "s|/Library/WebServer/Documents|$WEB_ROOT|g" /etc/apache2/httpd.conf
-sed -i ".original" "s|#LoadModule php5_module libexec/apache2/libphp5.so|LoadModule php5_module /usr/local/lib/libphp5.so|g" /etc/apache2/httpd.conf
+sed -i ".original" "s|#LoadModule php5_module libexec/apache2/libphp5//.so|LoadModule php5_module /usr/local/lib/libphp5//.so|g" /etc/apache2/httpd.conf
 
 apachectl restart
 
