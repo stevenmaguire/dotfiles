@@ -34,11 +34,9 @@ fi
 cp /etc/apache2/httpd.conf.default /etc/apache2/httpd.conf
 
 # Replace config defaults with custom defaults
-sed -i "s|/Library/WebServer/Documents|"$WEB_ROOT"|g" /etc/apache2/httpd.conf
-sed -i "s|#LoadModule php5_module libexec/apache2/libphp5.so|LoadModule php5_module /usr/local/lib/libphp5.so|g" /etc/apache2/httpd.conf
+eval "sed -i s|/Library/WebServer/Documents|$WEB_ROOT|g /etc/apache2/httpd.conf"
+eval "sed -i s|#LoadModule php5_module libexec/apache2/libphp5.so|LoadModule php5_module /usr/local/lib/libphp5.so|g /etc/apache2/httpd.conf"
 
 apachectl restart
 
 ./bin/sphp 56
-
-echo "Done configuring L(M)AMP."
