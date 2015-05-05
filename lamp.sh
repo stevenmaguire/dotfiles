@@ -3,7 +3,7 @@
 # Ask for the administrator password upfront
 sudo -v
 
-# Keep-alive: update existing `sudo` time stamp until `.osx` has finished
+# Keep-alive: update existing `sudo` time stamp until `lamp.sh` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 ## http://getgrav.org/blog/mac-os-x-apache-setup-multiple-php-versions
@@ -22,6 +22,7 @@ brew install php56
 brew cleanup
 
 # Create module path
+mkdir -p /usr/local/lib
 touch /usr/local/lib/libphp5.so
 
 # Update http conf
