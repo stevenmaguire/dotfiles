@@ -34,6 +34,7 @@ curl -o /etc/apache2/httpd.conf.default https://raw.githubusercontent.com/steven
 cp /etc/apache2/httpd.conf.default /etc/apache2/httpd.conf
 
 # Replace config defaults with custom defaults
+sed -i "s|#LoadModule rewrite_module|LoadModule rewrite_module|g" /etc/apache2/httpd.conf
 sed -i "s|#LoadModule php5_module libexec/apache2/libphp5.so|LoadModule php5_module /usr/local/lib/libphp5.so|g" /etc/apache2/httpd.conf
 sed -i "s|/Library/WebServer/Documents|"$WEB_ROOT"|g" /etc/apache2/httpd.conf
 
