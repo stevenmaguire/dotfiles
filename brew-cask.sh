@@ -21,6 +21,7 @@ brew cask install atom
 brew cask install balsamiq-mockups
 brew cask install imagealpha
 brew cask install imageoptim
+brew cask install java
 # brew cask install mamp
 brew cask install sequel-pro
 brew cask install sublime-text
