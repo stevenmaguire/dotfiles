@@ -35,4 +35,4 @@ apachectl restart
 
 ./bin/sphp 56
 
-echo "Done."
+echo "Done configuring L(M)AMP."
