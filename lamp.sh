@@ -21,6 +21,9 @@ brew install php56
 # Remove outdated versions from the cellar
 brew cleanup
 
+# Create module path
+touch /usr/local/lib/libphp5.so
+
 # Update http conf
 if [ ! -f /etc/apache2/httpd.conf.default ]; then
     curl -o /etc/apache2/httpd.conf.default https://raw.githubusercontent.com/stevenmaguire/apache2-conf-osx/master/httpd.conf.default
@@ -28,8 +31,9 @@ fi
 
 cp /etc/apache2/httpd.conf.default /etc/apache2/httpd.conf
 
+# Replace config defaults with custom defaults
 sed -i "s|/Library/WebServer/Documents|$WEB_ROOT|g" /etc/apache2/httpd.conf
-sed -i "s|#LoadModule php5_module libexec/apache2/libphp5//.so|LoadModule php5_module /usr/local/lib/libphp5//.so|g" /etc/apache2/httpd.conf
+sed -i "s|#LoadModule php5_module libexec/apache2/libphp5.so|LoadModule php5_module /usr/local/lib/libphp5.so|g" /etc/apache2/httpd.conf
 
 apachectl restart
 
