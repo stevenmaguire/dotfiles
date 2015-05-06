@@ -22,18 +22,21 @@ brew install php56
 ./bin/sphp 54
 brew install php54-apc
 brew install php54-xdebug
+brew install php54-mcrypt
 
 # Install APC and Xdebug for PHP 5.5
 ./bin/sphp 55
 brew install php55-opcache
 brew install php55-apcu
 brew install php55-xdebug
+brew install php55-mcrypt
 
 # Install APC and Xdebug for PHP 5.6
 ./bin/sphp 56
 brew install php56-opcache
 brew install php56-apcu
 brew install php56-xdebug
+brew install php56-mcrypt
 
 # Remove outdated versions from the cellar
 brew cleanup
