@@ -27,7 +27,7 @@ alias brwe=brew
 # be nice
 alias please=sudo
 alias hosts='sudo $EDITOR /etc/hosts'
-alias vhosts='sudo $EDITOR /etc/apache2/extra/httpd-vhosts.conf'
+alias vhosts='sudo $EDITOR $HOMEhttpd/vhosts.conf'
 
 # composer
 alias composer='php ~/bin/composer'
