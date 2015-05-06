@@ -36,11 +36,11 @@ sudo touch /usr/local/lib/libphp5.so
 
 # Update http conf
 ## Fetch new default if not exists
-curl -o /etc/apache2/httpd.conf.default https://raw.githubusercontent.com/stevenmaguire/apache2-conf-osx/master/10.10/httpd.conf.default
-curl -o /etc/apache2/extra/httpd-vhosts.conf https://raw.githubusercontent.com/stevenmaguire/apache2-conf-osx/master/10.10/httpd-vhosts.conf
+sudo curl -o /etc/apache2/httpd.conf.default https://raw.githubusercontent.com/stevenmaguire/apache2-conf-osx/master/10.10/httpd.conf.default
+sudo curl -o /etc/apache2/extra/httpd-vhosts.conf https://raw.githubusercontent.com/stevenmaguire/apache2-conf-osx/master/10.10/httpd-vhosts.conf
 
 ## Replace current with default
-cp /etc/apache2/httpd.conf.default /etc/apache2/httpd.conf
+sudo cp /etc/apache2/httpd.conf.default /etc/apache2/httpd.conf
 
 # Replace config defaults with custom defaults
 sudo sed -i "s|#LoadModule vhost_alias_module|LoadModule vhost_alias_module|g" /etc/apache2/httpd.conf
