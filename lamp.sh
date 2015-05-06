@@ -51,6 +51,7 @@ sudo touch /usr/local/lib/libphp5.so
 
 # Make projects directory and structure
 WEB_ROOT=$HOME'/Projects/php/apps'
+GROUP="staff"
 sudo mkdir -p $WEB_ROOT
 echo "<?php phpinfo();" > $WEB_ROOT"/index.php"
 sudo mkdir -p $HOME"/.httpd/vhosts"
@@ -69,6 +70,8 @@ sudo curl -o /etc/apache2/extra/httpd-vhosts.conf https://raw.githubusercontent.
 sudo cp /etc/apache2/httpd.conf.default /etc/apache2/httpd.conf
 
 # Replace config defaults with custom defaults
+sudo sed -i "s|User _www|User "$USER"|g" /etc/apache2/httpd.conf
+sudo sed -i "s|Group _www|Group "$GROUP"|g" /etc/apache2/httpd.conf
 sudo sed -i "s|#LoadModule vhost_alias_module|LoadModule vhost_alias_module|g" /etc/apache2/httpd.conf
 sudo sed -i "s|#LoadModule rewrite_module|LoadModule rewrite_module|g" /etc/apache2/httpd.conf
 sudo sed -i "s|#LoadModule php5_module libexec/apache2/libphp5.so|LoadModule php5_module /usr/local/lib/libphp5.so|g" /etc/apache2/httpd.conf
