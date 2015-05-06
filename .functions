@@ -23,12 +23,12 @@ cdf() {  # short for cdfinder
 }
 
 code () {
-  if [[ $# = 0 ]] 
+  if [[ $# = 0 ]]
   then
-    open -a "Visual Studio Code"
+    open -a "$IDE"
   else
     [[ $1 = /* ]] && F="$1" || F="$PWD/${1#./}"
-    open -a "Visual Studio Code" --args "$F"
+    open -a "$IDE" --args "$F"
   fi
 }
 
