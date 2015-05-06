@@ -25,10 +25,10 @@ cdf() {  # short for cdfinder
 code () {
   if [[ $# = 0 ]]
   then
-    open -a "$IDE"
+    open -a "$IDE" .
   else
     [[ $1 = /* ]] && F="$1" || F="$PWD/${1#./}"
-    open -a "$IDE" --args "$F"
+    open -a "$IDE" "$F"
   fi
 }
 
