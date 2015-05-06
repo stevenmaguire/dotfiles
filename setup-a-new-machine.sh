@@ -20,6 +20,9 @@ export PATH=$HOME/.homebrew/bin:$HOME/.homebrew/sbin:$PATH
 # PHP, MySQL, Apache!
 ./lamp.sh
 
+# Dotnet
+./dotnet.sh
+
 # https://github.com/jamiew/git-friendly
 # the `push` command which copies the github compare URL to my clipboard is heaven
 bash < <( curl https://raw.github.com/jamiew/git-friendly/master/install.sh)
