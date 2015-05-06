@@ -24,10 +24,10 @@ brew cask install imageoptim
 brew cask install java
 # brew cask install mamp
 brew cask install sequel-pro
-brew cask install sublime-text
+sudo brew cask install sublime-text3
 brew cask install vagrant
 brew cask install visual-studio-code
-brew cask install virtualbox
+sudo brew cask install virtualbox
 
 # browsers
 brew cask install google-chrome-canary

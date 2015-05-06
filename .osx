@@ -141,6 +141,8 @@ defaults write com.apple.BezelServices kDim -bool true
 # Turn off keyboard illumination when computer is not used for 5 minutes
 defaults write com.apple.BezelServices kDimTime -int 300
 
+# Enable mouse right click
+defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseButtonMode TwoButton
 
 # I LOVE ME SOME speling autocorrect.
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool true
