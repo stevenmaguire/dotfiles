@@ -12,8 +12,6 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 WEB_ROOT=$HOME'/Projects/php/apps'
 mkdir -p $WEB_ROOT
 echo "<?php phpinfo();" > $WEB_ROOT"/index.php"
-mkdir -p $HOME"/.httpd"
-touch $HOME"/.httpd/vhosts.conf";
 
 # Install PHP
 brew tap homebrew/homebrew-php
@@ -43,7 +41,7 @@ sed -i "s|/Library/WebServer/Documents|"$WEB_ROOT"|g" /etc/apache2/httpd.conf
 sed -i "s|#Include /private/etc/apache2/extra/httpd-vhosts.conf|Include /private/etc/apache2/extra/httpd-vhosts.conf|g" /etc/apache2/httpd.conf
 
 sed -i "s|/Library/WebServer/Documents|"$WEB_ROOT"|g" /etc/apache2/extra/httpd-vhosts.conf
-echo "Include $HOME/.httpd/vhosts.conf" >> /etc/apache2/extra/httpd-vhosts.conf
+echo "Include $HOME/.httpd/vhosts/*.conf" >> /etc/apache2/extra/httpd-vhosts.conf
 
 
 # Add current user to apache group
