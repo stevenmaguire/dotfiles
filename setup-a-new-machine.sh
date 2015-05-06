@@ -17,14 +17,12 @@ export PATH=$HOME/.homebrew/bin:$HOME/.homebrew/sbin:$PATH
 ./brew.sh
 ./brew-cask.sh
 
-
-# PHP!
+# PHP, MySQL, Apache!
 ./lamp.sh
 
 # https://github.com/jamiew/git-friendly
 # the `push` command which copies the github compare URL to my clipboard is heaven
 bash < <( curl https://raw.github.com/jamiew/git-friendly/master/install.sh)
-
 
 # Type git open to open the GitHub page or website for a repository.
 npm install -g git-open
@@ -37,7 +35,6 @@ chmod +x ~/code/z/z.sh
 # also consider moving over your current .z file if possible. it's painful to rebuild :)
 
   # z binary is already referenced from .bash_profile
-
 
 # https://github.com/thebitguru/play-button-itunes-patch
 # disable itunes opening on media keys
@@ -54,7 +51,6 @@ git clone https://github.com/thebitguru/play-button-itunes-patch
 # for the c alias (syntax highlighted cat)
 sudo easy_install Pygments
 
-
 # change to bash 4 (installed by homebrew)
 BASHPATH=$(brew --prefix)/bin/bash
 sudo echo $BASHPATH >> /etc/shells
@@ -62,7 +58,6 @@ chsh -s $BASHPATH # will set for current user only.
 echo $BASH_VERSION # should be 4.x not the old 3.2.X
 
 # Later, confirm iterm settings aren't conflicting.
-
 
 # symlinks!
 #   put/move git credentials into ~/.gitconfig.local

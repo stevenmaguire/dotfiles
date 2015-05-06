@@ -38,7 +38,6 @@ cp_p () {
   rsync -WavP --human-readable --progress $1 $2
 }
 
-
 # Syntax-highlight JSON strings or files
 function json() {
     if [ -p /dev/stdin ]; then
@@ -49,9 +48,6 @@ function json() {
         python -mjson.tool <<< "$*" | pygmentize -l javascript
     fi
 }
-
-
-
 
 # get gzipped size
 function gz() {
@@ -74,7 +70,6 @@ function whois() {
                                                     # strip extra fluff
     /usr/bin/whois -h whois.internic.net $domain | sed '/NOTICE:/q'
 }
-
 
 
 # Extract archives - use: extract <file>
@@ -120,7 +115,6 @@ camerausedby() {
     usedby=$(lsof | grep -w "AppleCamera\|USBVDC\|iSight" | awk '{printf $2"\n"}' | xargs ps)
     echo -e "Recent camera uses:\n$usedby"
 }
-
 
 # animated gifs from any video
 # from alex sexton   gist.github.com/SlexAxton/4989674
