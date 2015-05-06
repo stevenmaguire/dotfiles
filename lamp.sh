@@ -12,8 +12,8 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 WEB_ROOT=$HOME'/Projects/php/apps'
 mkdir -p $WEB_ROOT
 echo "<?php phpinfo();" > $WEB_ROOT"/index.php"
-mkdir -p $HOME"/.http/vhosts"
-touch $HOME"/.http/vhosts/default.conf"
+mkdir -p $HOME".httpd/vhosts"
+touch $HOME".httpd/vhosts/default.conf"
 
 # Install PHP
 brew tap homebrew/homebrew-php
