@@ -19,6 +19,15 @@ function lint() {
     phpcs --standard=PSR2 $PATH_TO_LINT
 }
 
+#view coverage report
+function coverage() {
+    REPORT="./build/coverage/html/index.html"
+    if [ -f $REPORT ]
+    then
+        open $REPORT
+    fi
+}
+
 # toggle hidden files
 function showhidden {
     if [ -n "$1" ] && [ "$1" = false ]; then

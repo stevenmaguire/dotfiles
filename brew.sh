@@ -9,6 +9,9 @@ brew update
 # Upgrade any already-installed formulae
 brew upgrade
 
+# Include some goodies to remove dependancies
+brew tap beeftornado/rmtree && brew install brew-rmtree
+
 # Install GNU core utilities (those that come with OS X are outdated)
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
 brew install coreutils

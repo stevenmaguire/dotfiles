@@ -8,6 +8,12 @@ sudo -v
 # Keep-alive: update existing `sudo` time stamp until `.osx` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
+function gettimezone() {
+    TZ_STRING="$(sudo systemsetup -gettimezone)"
+
+    echo ${TZ_STRING/Time\ Zone\:/}
+}
+
 #------------------------------
 # PHP
 #------------------------------
@@ -23,6 +29,7 @@ brew install php56
 brew install php54-apc
 brew install php54-xdebug
 brew install php54-mcrypt
+sudo sed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" $HOME/.homebrew/etc/php/5.4/php.ini
 
 # Install APC and Xdebug for PHP 5.5
 ./bin/sphp 55
@@ -30,6 +37,7 @@ brew install php55-opcache
 brew install php55-apcu
 brew install php55-xdebug
 brew install php55-mcrypt
+sudo sed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" $HOME/.homebrew/etc/php/5.5/php.ini
 
 # Install APC and Xdebug for PHP 5.6
 ./bin/sphp 56
@@ -37,6 +45,7 @@ brew install php56-opcache
 brew install php56-apcu
 brew install php56-xdebug
 brew install php56-mcrypt
+sudo sed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" $HOME/.homebrew/etc/php/5.6/php.ini
 
 # Remove outdated versions from the cellar
 brew cleanup
@@ -94,6 +103,7 @@ unset TMPDIR
 mysql_install_db
 mysql.server start
 
+
 #------------------------------
 # Use PHP 5.6
 #------------------------------
@@ -103,24 +113,42 @@ mysql.server start
 #------------------------------
 # Install composer
 #------------------------------
-curl -sS https://getcomposer.org/installer | php
-chmod +x composer.phar
-sudo mv composer.phar ./bin/composer
+COMPOSER_BINARY="./bin/composer"
+if [ ! -f $COMPOSER_BINARY ]; then
+    curl -sS https://getcomposer.org/installer | php
+    chmod +x composer.phar
+    sudo mv composer.phar $COMPOSER_BINARY
+fi
+unset COMPOSER_BINARY
 
 #------------------------------
 # Install phpunit
 #------------------------------
-wget https://phar.phpunit.de/phpunit.phar
-chmod +x phpunit.phar
-sudo mv phpunit.phar ./bin/phpunit
+PHPUNIT_BINARY="./bin/phpunit"
+if [ ! -f $PHPUNIT_BINARY ]; then
+    wget https://phar.phpunit.de/phpunit.phar
+    chmod +x phpunit.phar
+    sudo mv phpunit.phar $PHPUNIT_BINARY
+fi
+unset PHPUNIT_BINARY
 
 #------------------------------
 # Install php code sniffer
 #------------------------------
-curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
-chmod +x phpcs.phar
-sudo mv phpcs.phar ./bin/phpcs
+CS_BINARY="./bin/phpcs"
+if [ ! -f $CS_BINARY ]; then
+    curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
+    chmod +x phpcs.phar
+    sudo mv phpcs.phar $CS_BINARY
+fi
+unset CS_BINARY
 
-curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcbf.phar
-chmod +x phpcbf.phar
-sudo mv phpcbf.phar ./bin/phpcbf
+CSF_BINARY="./bin/phpcbf"
+if [ ! -f $CSF_BINARY ]; then
+    curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcbf.phar
+    chmod +x phpcbf.phar
+    sudo mv phpcbf.phar $CSF_BINARY
+fi
+unset CSF_BINARY
+
+echo "Tip: Run mysql_secure_installation to configure mysql users"
