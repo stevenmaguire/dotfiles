@@ -1,16 +1,23 @@
+# homebrew basics
+PATH=~/.homebrew/bin:~/.homebrew/sbin:~/bin:$PATH
+
+# dotnet
+source dnvm.sh
+
+
 # Load ~/.extra, ~/.bash_prompt, ~/.exports, ~/.aliases and ~/.functions
 # ~/.extra can be used for settings you don’t want to commit
 for file in ~/.{extra,bash_prompt,exports,aliases,functions}; do
-	[ -r "$file" ] && source "$file"
+    [ -r "$file" ] && source "$file"
 done
 unset file
 
 # generic colouriser
 GRC=`which grc`
-if [ "$TERM" != dumb ] && [ -n "$GRC" ] 
+if [ "$TERM" != dumb ] && [ -n "$GRC" ]
     then
         alias colourify="$GRC -es --colour=auto"
-        alias configure='colourify ./configure' 
+        alias configure='colourify ./configure'
         for app in {diff,make,gcc,g++,mtr,ping,traceroute}; do
             alias "$app"='colourify '$app
         done
@@ -65,7 +72,7 @@ complete -W "NSGlobalDomain" defaults
 
 ##
 ## better `cd`'ing
-## 
+##
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;

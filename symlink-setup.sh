@@ -1,9 +1,3 @@
-# homebrew basics
-PATH=~/.homebrew/bin:~/.homebrew/sbin:~/bin:$PATH
-
-# dotnet
-source dnvm.sh
-
 #!/bin/bash
 
 # this symlinks all the dotfiles (and .vim/) to ~/

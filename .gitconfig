@@ -77,3 +77,6 @@
 [include]
   # For username / github token / etc
   path = ~/.gitconfig.local
+[user]
+	name = Steven Maguire
+	email = stevenmaguire@gmail.com
