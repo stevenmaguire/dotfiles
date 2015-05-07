@@ -95,7 +95,32 @@ mysql_install_db
 mysql.server start
 
 #------------------------------
-# Finish up
+# Use PHP 5.6
 #------------------------------
 
 ./bin/sphp 56
+
+#------------------------------
+# Install composer
+#------------------------------
+curl -sS https://getcomposer.org/installer | php
+chmod +x composer.phar
+sudo mv composer.phar ./bin/composer
+
+#------------------------------
+# Install phpunit
+#------------------------------
+wget https://phar.phpunit.de/phpunit.phar
+chmod +x phpunit.phar
+sudo mv phpunit.phar ./bin/phpunit
+
+#------------------------------
+# Install php code sniffer
+#------------------------------
+curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
+chmod +x phpcs.phar
+sudo mv phpcs.phar ./bin/phpcs
+
+curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcbf.phar
+chmod +x phpcbf.phar
+sudo mv phpcbf.phar ./bin/phpcbf

@@ -8,6 +8,17 @@ function f() {
     find . -name "$1" 2>&1 | grep -v 'Permission denied'
 }
 
+# code linter
+function lint() {
+    if [ -z "$1" ]
+    then
+        PATH_TO_LINT="."
+    else
+        PATH_TO_LINT=$1
+    fi
+    phpcs --standard=PSR2 $PATH_TO_LINT
+}
+
 # toggle hidden files
 function showhidden {
     if [ -n "$1" ] && [ "$1" = false ]; then

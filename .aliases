@@ -31,7 +31,6 @@ alias hosts='sudo $EDITOR /etc/hosts'
 alias vhosts='sudo $EDITOR $HOME/.httpd/vhosts/default.conf'
 
 # composer
-alias composer='php ~/bin/composer'
 alias composer-update='sudo php ~/bin/composer self-update'
 
 # ssh key
