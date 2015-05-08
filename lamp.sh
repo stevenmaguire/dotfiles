@@ -151,4 +151,9 @@ if [ ! -f $CSF_BINARY ]; then
 fi
 unset CSF_BINARY
 
+#------------------------------
+# Install gulp globally
+#------------------------------
+sudo npm install -g gulp
+
 echo "Tip: Run mysql_secure_installation to configure mysql users"
