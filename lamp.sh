@@ -156,4 +156,8 @@ unset CSF_BINARY
 #------------------------------
 sudo npm install -g gulp
 
+
+#------------------------------
+# Some helpful tips
+#------------------------------
 echo "Tip: Run mysql_secure_installation to configure mysql users"
