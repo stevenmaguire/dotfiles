@@ -20,6 +20,9 @@ export PATH=$HOME/.homebrew/bin:$HOME/.homebrew/sbin:$PATH
 # PHP, MySQL, Apache!
 ./lamp.sh
 
+# Ruby and rails
+./ruby.sh
+
 # Dotnet
 ./dotnet.sh
 
