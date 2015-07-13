@@ -22,7 +22,6 @@ brew cask install balsamiq-mockups
 brew cask install imagealpha
 brew cask install imageoptim
 brew cask install java
-sudo brew cask install google-cloud-sdk
 
 # brew cask install mamp
 brew cask install mysqlworkbench
