@@ -10,3 +10,9 @@ export LC_ALL="en_US.UTF-8"
 export LANG="en_US"
 
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
+# Configure Go paths
+export GOPATH=$HOME/.go
+export GOROOT=$HOME/.homebrew/opt/go/libexec
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin

@@ -23,8 +23,17 @@ export PATH=$HOME/.homebrew/bin:$HOME/.homebrew/sbin:$PATH
 # Ruby and rails
 ./ruby.sh
 
+# Go
+./go.sh
+
 # Dotnet
 ./dotnet.sh
+
+# Elastic Search
+./elasticsearch.sh
+
+# Beanstalkd
+./beanstalkd.sh
 
 # Dropbox symlinks
 ./dropbox.sh

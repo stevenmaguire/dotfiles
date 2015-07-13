@@ -4,7 +4,6 @@ PATH=~/.homebrew/bin:~/.homebrew/sbin:~/bin:$PATH
 # dotnet
 source dnvm.sh
 
-
 # Load ~/.extra, ~/.bash_prompt, ~/.exports, ~/.aliases and ~/.functions
 # ~/.extra can be used for settings you don’t want to commit
 for file in ~/.{extra,bash_prompt,exports,aliases,functions}; do
@@ -83,8 +82,6 @@ shopt -s cdspell;
 # z beats cd most of the time.
 #   github.com/rupa/z
 source ~/code/z/z.sh
-
-
 
 ##
 ## hooking in other apps…
