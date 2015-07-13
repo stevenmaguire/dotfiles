@@ -11,8 +11,6 @@ alias projects="cd ~/Projects"
 
 alias rm="rm -i"
 
-alias go="open ."
-
 # setting up the sublime symlink
 ln -sf "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ~/bin/subl
 

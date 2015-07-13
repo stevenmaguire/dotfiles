@@ -2,7 +2,7 @@
 mkdir -p $HOME/.go
 mkdir -p $HOME/.go/bin
 mkdir -p $HOME/.go/pkg
-mkdir -p $HOME/.go/src/github.com
+mkdir -p $HOME/.go/src/github.com/stevenmaguire
 
 # Install Components
 brew install go
