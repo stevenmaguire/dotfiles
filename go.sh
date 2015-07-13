@@ -1,8 +1,8 @@
 # Create environment
-mkdir -p $HOME/.go
-mkdir -p $HOME/.go/bin
-mkdir -p $HOME/.go/pkg
-mkdir -p $HOME/.go/src/github.com/stevenmaguire
+mkdir -p $HOME/Projects/go
+mkdir -p $HOME/Projects/go/bin
+mkdir -p $HOME/Projects/go/pkg
+mkdir -p $HOME/Projects/go/src/github.com/stevenmaguire
 
 # Install Components
 brew install go
