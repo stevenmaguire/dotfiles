@@ -19,6 +19,7 @@ brew cask install rescuetime
 brew cask install android-studio
 brew cask install atom
 brew cask install balsamiq-mockups
+brew cask install hackhands
 brew cask install imagealpha
 brew cask install imageoptim
 brew cask install java
