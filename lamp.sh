@@ -29,6 +29,7 @@ brew install php56
 brew install php54-apc
 brew install php54-xdebug
 brew install php54-mcrypt
+brew install php54-mongo
 sudo sed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" $HOME/.homebrew/etc/php/5.4/php.ini
 
 # Install APC and Xdebug for PHP 5.5
@@ -37,6 +38,7 @@ brew install php55-opcache
 brew install php55-apcu
 brew install php55-xdebug
 brew install php55-mcrypt
+brew install php55-mongo
 sudo sed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" $HOME/.homebrew/etc/php/5.5/php.ini
 
 # Install APC and Xdebug for PHP 5.6
@@ -45,6 +47,7 @@ brew install php56-opcache
 brew install php56-apcu
 brew install php56-xdebug
 brew install php56-mcrypt
+brew install php56-mongo
 sudo sed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" $HOME/.homebrew/etc/php/5.6/php.ini
 
 # Remove outdated versions from the cellar
