@@ -14,6 +14,7 @@ brew cask install dropbox
 brew cask install evernote
 brew cask install google-drive
 brew cask install rescuetime
+brew cask install 1password
 
 # dev
 brew cask install android-studio
