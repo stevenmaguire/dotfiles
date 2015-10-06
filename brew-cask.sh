@@ -24,6 +24,7 @@ brew cask install hackhands
 brew cask install imagealpha
 brew cask install imageoptim
 brew cask install java
+brew cask install dockertoolbox
 
 # brew cask install mamp
 brew cask install mysqlworkbench

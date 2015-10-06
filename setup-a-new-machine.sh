@@ -32,9 +32,6 @@ export PATH=$HOME/.homebrew/bin:$HOME/.homebrew/sbin:$PATH
 # Elastic Search
 ./elasticsearch.sh
 
-# Beanstalkd
-./beanstalkd.sh
-
 # Dropbox symlinks
 ./dropbox.sh
 
