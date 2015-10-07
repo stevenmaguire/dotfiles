@@ -1,7 +1,19 @@
 # Create Docker Host using VirtualBox
+
 DOCKER_MACHINE_NAME="docker.host.$(hostname)"
 
 STATUS="$(docker-machine status $DOCKER_MACHINE_NAME 2> /dev/null)"
+
+# Setup startup script
+# https://gist.github.com/stevenmaguire/3290f93a616560e624dd
+curl -sL http://git.io/vcj2P | \
+    sed -e "s?{{docker-machine}}?$(which docker-machine)?" \
+        -e "s?{{docker-machine-name}}?$DOCKER_MACHINE_NAME?" \
+        -e "s?{{user-path}}?$(echo $PATH)?" \
+    >~/Library/LaunchAgents/com.docker.machine.default.plist && \
+    launchctl unload ~/Library/LaunchAgents/com.docker.machine.default.plist && \
+    launchctl load ~/Library/LaunchAgents/com.docker.machine.default.plist && \
+    echo "docker-machine statup script loaded."
 
 if [ $? -eq 0 ]; then
     echo "$DOCKER_MACHINE_NAME already created."
@@ -25,8 +37,10 @@ else
     docker-machine create --driver virtualbox $DOCKER_MACHINE_NAME
 fi
 
-eval "$(docker-machine env $DOCKER_MACHINE_NAME)"
+# Load docker-machine variables into shell
+eval "$(docker-machine env $DOCKER_MACHINE_NAME)" && echo "docker-machine env variables loaded."
 
+# List all docker machines
 docker-machine ls
 
 # Update hosts file with new IP of docker host
@@ -94,4 +108,5 @@ done
 # Display containers
 docker ps -a
 
+# Cleanup local variables
 unset -v DOCKER_IMAGES STATUS
