@@ -56,6 +56,7 @@ brew install tree
 brew install zopfli
 brew install ffmpeg --with-libvpx
 brew install android-platform-tools
+brew install s3cmd
 
 # Remove outdated versions from the cellar
 brew cleanup
