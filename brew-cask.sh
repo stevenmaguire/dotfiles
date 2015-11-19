@@ -51,6 +51,7 @@ brew cask install slack
 # less often
 brew cask install appzapper
 brew cask install disk-inventory-x
+brew cask install gimp
 brew cask install musicbrainz-picard
 brew cask install screenflow
 brew cask install transmit
