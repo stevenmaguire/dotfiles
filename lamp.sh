@@ -159,6 +159,11 @@ unset CSF_BINARY
 #------------------------------
 sudo npm install -g gulp
 
+#------------------------------
+# Install laravel tools
+#------------------------------
+composer global require "laravel/installer=~1.1"
+composer global require "laravel/spark-installer=~1.0"
 
 #------------------------------
 # Some helpful tips
