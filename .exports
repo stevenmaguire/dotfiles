@@ -16,3 +16,6 @@ export GOPATH=$HOME/Projects/go
 export GOROOT=$HOME/.homebrew/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
+
+# Configure Composer path
+export PATH="~/.composer/vendor/bin:$PATH"
