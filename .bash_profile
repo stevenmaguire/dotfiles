@@ -93,10 +93,3 @@ source ~/code/z/z.sh
 ##
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-
-
-# The next line updates PATH for the Google Cloud SDK.
-source '/Users/stevenmaguire/code/google-cloud-sdk/path.bash.inc'
-
-# The next line enables shell command completion for gcloud.
-source '/Users/stevenmaguire/code/google-cloud-sdk/completion.bash.inc'
