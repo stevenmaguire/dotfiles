@@ -5,8 +5,6 @@ PATH=~/.homebrew/bin:~/.homebrew/sbin:~/bin:$PATH
 source dnvm.sh
 
 # Google cloud
-# The next line updates PATH for the Google Cloud SDK.
-source "$HOME/.google/google-cloud-sdk/google-cloud-sdk/path.bash.inc"
 
 # The next line enables shell command completion for gcloud.
 source "$HOME/.google/google-cloud-sdk/google-cloud-sdk/completion.bash.inc"
@@ -96,3 +94,9 @@ source ~/code/z/z.sh
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
+
+# The next line updates PATH for the Google Cloud SDK.
+source '/Users/stevenmaguire/code/google-cloud-sdk/path.bash.inc'
+
+# The next line enables shell command completion for gcloud.
+source '/Users/stevenmaguire/code/google-cloud-sdk/completion.bash.inc'

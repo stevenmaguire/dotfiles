@@ -24,3 +24,6 @@ Thumbs.db
 
 # Compiled Python files
 *.pyc
+
+/play-button-itunes-patch
+/z

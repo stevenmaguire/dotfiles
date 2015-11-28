@@ -21,8 +21,11 @@ function gettimezone() {
 # Install PHP
 brew tap homebrew/homebrew-php
 brew install php54
+brew unlink php54
 brew install php55
+brew unlink php55
 brew install php56
+brew unlink php56
 
 # Install APC and Xdebug for PHP 5.4
 ./bin/sphp 54
@@ -102,9 +105,9 @@ sudo apachectl restart
 # MySQL
 #------------------------------
 brew install mysql
-unset TMPDIR
-mysql_install_db
-mysql.server start
+#unset TMPDIR
+#mysqld --initialize
+#mysql.server start
 
 
 #------------------------------
