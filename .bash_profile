@@ -7,7 +7,7 @@ source dnvm.sh
 # Google cloud
 
 # The next line enables shell command completion for gcloud.
-source "$HOME/.google/google-cloud-sdk/google-cloud-sdk/completion.bash.inc"
+source "$HOME/.google/google-cloud-sdk/completion.bash.inc"
 
 # Load ~/.extra, ~/.bash_prompt, ~/.exports, ~/.aliases and ~/.functions
 # ~/.extra can be used for settings you don’t want to commit
