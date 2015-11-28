@@ -2,7 +2,7 @@
 PATH=~/.homebrew/bin:~/.homebrew/sbin:~/bin:$PATH
 
 # dotnet
-source dnvm.sh
+#source dnvm.sh
 
 # Google cloud
 
