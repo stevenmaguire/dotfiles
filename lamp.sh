@@ -105,9 +105,9 @@ sudo apachectl restart
 # MySQL
 #------------------------------
 brew install mysql
-#unset TMPDIR
+unset TMPDIR
 #mysqld --initialize
-#mysql.server start
+mysql.server start
 
 
 #------------------------------
