@@ -52,6 +52,7 @@ brew install imagemagick --with-webp
 brew install node # This installs `npm` too using the recommended installation method
 brew install pv
 brew install rename
+brew install sslmate
 brew install tree
 brew install zopfli
 brew install ffmpeg --with-libvpx
