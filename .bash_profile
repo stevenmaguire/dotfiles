@@ -6,6 +6,9 @@ PATH=~/.homebrew/bin:~/.homebrew/sbin:~/bin:$PATH
 
 # Google cloud
 
+# Composer binaries
+PATH=~/.composer/vendor/bin:$PATH
+
 # The next line enables shell command completion for gcloud.
 source "$HOME/.google/google-cloud-sdk/completion.bash.inc"
 
