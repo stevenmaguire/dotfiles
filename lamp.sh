@@ -80,6 +80,7 @@ sudo touch /usr/local/lib/libphp5.so
 WEB_ROOT=$HOME'/Projects/php/apps'
 GROUP="staff"
 sudo mkdir -p $WEB_ROOT
+sudo chown -R $(whoami) $WEB_ROOT
 sudo touch $WEB_ROOT"/index.php"
 sudo echo "<?php phpinfo();" > $WEB_ROOT"/index.php"
 sudo mkdir -p $HOME"/.httpd/vhosts"
