@@ -68,7 +68,7 @@ sudo touch /usr/local/lib/libphp5.so
 WEB_ROOT=$HOME'/Projects/php/apps'
 GROUP="staff"
 sudo mkdir -p $WEB_ROOT
-echo "<?php phpinfo();" > $WEB_ROOT"/index.php"
+sudo echo "<?php phpinfo();" > $WEB_ROOT"/index.php"
 sudo mkdir -p $HOME"/.httpd/vhosts"
 sudo touch $HOME"/.httpd/vhosts/default.conf"
 
