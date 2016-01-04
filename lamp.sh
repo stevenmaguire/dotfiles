@@ -26,6 +26,8 @@ brew install php55
 brew unlink php55
 brew install php56
 brew unlink php56
+brew install php70
+brew unlink php70
 
 # Install APC and Xdebug for PHP 5.4
 ./bin/sphp 54
@@ -53,6 +55,16 @@ brew install php56-mcrypt
 brew install php56-mongo
 sudo sed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" $HOME/.homebrew/etc/php/5.6/php.ini
 
+# Install APC and Xdebug for PHP 7.0
+./bin/sphp 70
+brew install php70-opcache
+brew install php70-apcu
+brew install php70-xdebug
+brew install php70-mcrypt
+# brew install php70-mongo
+sudo sed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" $HOME/.homebrew/etc/php/7.0/php.ini
+
+
 # Remove outdated versions from the cellar
 brew cleanup
 
@@ -68,6 +80,7 @@ sudo touch /usr/local/lib/libphp5.so
 WEB_ROOT=$HOME'/Projects/php/apps'
 GROUP="staff"
 sudo mkdir -p $WEB_ROOT
+sudo touch $WEB_ROOT"/index.php"
 sudo echo "<?php phpinfo();" > $WEB_ROOT"/index.php"
 sudo mkdir -p $HOME"/.httpd/vhosts"
 sudo touch $HOME"/.httpd/vhosts/default.conf"
@@ -111,10 +124,10 @@ mysql.server start
 
 
 #------------------------------
-# Use PHP 5.6
+# Use PHP 7.0
 #------------------------------
 
-./bin/sphp 56
+./bin/sphp 70
 
 #------------------------------
 # Install composer
