@@ -17,6 +17,10 @@ export PATH=$HOME/.homebrew/bin:$HOME/.homebrew/sbin:$PATH
 ./brew.sh
 ./brew-cask.sh
 
+# Create code home
+mkdir -p $HOME/Projects
+sudo chown -R $(whoami) $HOME/Projects
+
 # PHP, MySQL, Apache!
 ./lamp.sh
 
