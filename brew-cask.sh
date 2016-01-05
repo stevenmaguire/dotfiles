@@ -33,6 +33,7 @@ sudo brew cask install sublime-text3
 brew cask install vagrant
 brew cask install visual-studio-code
 sudo brew cask install virtualbox
+brew cask install psequel
 
 # browsers
 brew cask install google-chrome-canary
