@@ -10,13 +10,14 @@ brew install caskroom/cask/brew-cask
 brew tap caskroom/versions
 
 # daily
+brew cask install 1password
 brew cask install cloud
 brew cask install dashlane
 brew cask install dropbox
 brew cask install evernote
 brew cask install google-drive
 brew cask install rescuetime
-brew cask install 1password
+brew cask install viscosity
 
 # dev
 brew cask install android-studio
