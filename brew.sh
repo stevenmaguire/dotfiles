@@ -62,6 +62,7 @@ brew install android-platform-tools
 brew install s3cmd
 brew install gpg
 brew install ngrok
+brew install stunnel
 
 # Remove outdated versions from the cellar
 brew cleanup
