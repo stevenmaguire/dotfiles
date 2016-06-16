@@ -29,6 +29,7 @@ brew cask install imagealpha
 brew cask install imageoptim
 brew cask install java
 brew cask install dockertoolbox
+brew cask install postman
 
 # brew cask install mamp
 brew cask install mysqlworkbench
