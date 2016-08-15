@@ -24,6 +24,7 @@ brew cask install viscosity
 brew cask install android-studio
 brew cask install atom
 brew cask install balsamiq-mockups
+brew cask install ccmenu
 brew cask install hackhands
 brew cask install imagealpha
 brew cask install imageoptim
