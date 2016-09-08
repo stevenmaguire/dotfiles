@@ -11,6 +11,7 @@ brew tap caskroom/versions
 
 # daily
 brew cask install 1password
+brew cask install adobe-creative-cloud
 brew cask install cloud
 brew cask install dashlane
 brew cask install dropbox
