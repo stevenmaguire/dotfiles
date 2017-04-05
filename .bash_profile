@@ -9,6 +9,9 @@ PATH=~/.homebrew/bin:~/.homebrew/sbin:~/bin:$PATH
 # Composer binaries
 PATH=~/.composer/vendor/bin:$PATH
 
+# rbenv
+eval "$(rbenv init -)"
+
 # The next line enables shell command completion for gcloud.
 #source "$HOME/.google/google-cloud-sdk/completion.bash.inc"
 
