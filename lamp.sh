@@ -82,6 +82,7 @@ brew install php72-opcache
 brew install php72-apcu
 brew install php72-xdebug
 # brew install php72-mcrypt - does not exist
+brew install php72-intl
 sudo sed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" $HOME/.homebrew/etc/php/7.2/php.ini
 
 # Remove outdated versions from the cellar
