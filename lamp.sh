@@ -28,6 +28,10 @@ brew install php56
 brew unlink php56
 brew install php70
 brew unlink php70
+brew install php71
+brew unlink php71
+brew install php72
+brew unlink php72
 
 # Install APC and Xdebug for PHP 5.4
 ./bin/sphp 54
@@ -64,6 +68,21 @@ brew install php70-mcrypt
 # brew install php70-mongo
 sudo sed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" $HOME/.homebrew/etc/php/7.0/php.ini
 
+# Install APC and Xdebug for PHP 7.1
+./bin/sphp 71
+brew install php71-opcache
+brew install php71-apcu
+brew install php71-xdebug
+brew install php71-mcrypt
+sudo sed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" $HOME/.homebrew/etc/php/7.1/php.ini
+
+# Install APC and Xdebug for PHP 7.2
+./bin/sphp 72
+brew install php72-opcache
+brew install php72-apcu
+brew install php72-xdebug
+# brew install php72-mcrypt - does not exist
+sudo sed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" $HOME/.homebrew/etc/php/7.2/php.ini
 
 # Remove outdated versions from the cellar
 brew cleanup
