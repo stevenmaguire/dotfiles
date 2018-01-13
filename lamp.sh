@@ -199,8 +199,8 @@ sudo npm install -g gulp
 #------------------------------
 # Install laravel tools
 #------------------------------
-composer global require "laravel/installer=~1.1"
-composer global require "laravel/spark-installer=~1.0"
+composer global require laravel/installer
+composer global require laravel/spark-installer
 
 #------------------------------
 # Some helpful tips
