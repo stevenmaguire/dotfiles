@@ -1,19 +1,8 @@
 # homebrew basics
-PATH=~/.homebrew/bin:~/.homebrew/sbin:~/bin:$PATH
-
-# dotnet
-#source dnvm.sh
-
-# Google cloud
-
-# Composer binaries
-PATH=~/.composer/vendor/bin:$PATH
+# PATH=~/.homebrew/bin:~/.homebrew/sbin:~/bin:$PATH
 
 # rbenv
 eval "$(rbenv init -)"
-
-# The next line enables shell command completion for gcloud.
-#source "$HOME/.google/google-cloud-sdk/completion.bash.inc"
 
 # Load ~/.extra, ~/.bash_prompt, ~/.exports, ~/.aliases and ~/.functions
 # ~/.extra can be used for settings you don’t want to commit
@@ -59,10 +48,8 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # bash completion.
 if which brew > /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
-    source "$(brew --prefix)/share/bash-completion/bash_completion";
-elif [ -f /etc/bash_completion ]; then
-    source /etc/bash_completion;
-fi;
+    . "$(brew --prefix)/share/bash-completion/bash_completion";
+fi
 
 # homebrew completion
 source `brew --repository`/Library/Contributions/brew_bash_completion.sh
@@ -91,8 +78,9 @@ shopt -s nocaseglob;
 shopt -s cdspell;
 
 # z beats cd most of the time.
-#   github.com/rupa/z
-source ~/code/z/z.sh
+if which brew > /dev/null && [ -f "$(brew --prefix)/etc/profile.d/z.sh" ]; then
+    . "$(brew --prefix)/etc/profile.d/z.sh";
+fi
 
 ##
 ## hooking in other apps…

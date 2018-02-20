@@ -39,7 +39,7 @@ brew install php54-apc
 brew install php54-xdebug
 brew install php54-mcrypt
 brew install php54-mongo
-sudo sed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" $HOME/.homebrew/etc/php/5.4/php.ini
+sudo sed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" $(brew --prefix)/etc/php/5.4/php.ini
 
 # Install APC and Xdebug for PHP 5.5
 ./bin/sphp 55
@@ -48,7 +48,7 @@ brew install php55-apcu
 brew install php55-xdebug
 brew install php55-mcrypt
 brew install php55-mongo
-sudo sed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" $HOME/.homebrew/etc/php/5.5/php.ini
+sudo sed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" $(brew --prefix)/etc/php/5.5/php.ini
 
 # Install APC and Xdebug for PHP 5.6
 ./bin/sphp 56
@@ -57,7 +57,7 @@ brew install php56-apcu
 brew install php56-xdebug
 brew install php56-mcrypt
 brew install php56-mongo
-sudo sed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" $HOME/.homebrew/etc/php/5.6/php.ini
+sudo sed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" $(brew --prefix)/etc/php/5.6/php.ini
 
 # Install APC and Xdebug for PHP 7.0
 ./bin/sphp 70
@@ -65,8 +65,7 @@ brew install php70-opcache
 brew install php70-apcu
 brew install php70-xdebug
 brew install php70-mcrypt
-# brew install php70-mongo
-sudo sed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" $HOME/.homebrew/etc/php/7.0/php.ini
+sudo sed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" $(brew --prefix)/etc/php/7.0/php.ini
 
 # Install APC and Xdebug for PHP 7.1
 ./bin/sphp 71
@@ -74,16 +73,15 @@ brew install php71-opcache
 brew install php71-apcu
 brew install php71-xdebug
 brew install php71-mcrypt
-sudo sed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" $HOME/.homebrew/etc/php/7.1/php.ini
+sudo sed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" $(brew --prefix)/etc/php/7.1/php.ini
 
 # Install APC and Xdebug for PHP 7.2
 ./bin/sphp 72
 brew install php72-opcache
 brew install php72-apcu
 brew install php72-xdebug
-# brew install php72-mcrypt - does not exist
 brew install php72-intl
-sudo sed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" $HOME/.homebrew/etc/php/7.2/php.ini
+sudo sed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" $(brew --prefix)/etc/php/7.2/php.ini
 
 # Remove outdated versions from the cellar
 brew cleanup
@@ -93,54 +91,10 @@ sudo mkdir -p /usr/local/lib
 sudo touch /usr/local/lib/libphp5.so
 
 #------------------------------
-# Directories
-#------------------------------
-
-# Make projects directory and structure
-WEB_ROOT=$HOME'/Projects/php/apps'
-GROUP="staff"
-sudo mkdir -p $WEB_ROOT
-sudo chown -R $(whoami) $WEB_ROOT
-sudo touch $WEB_ROOT"/index.php"
-sudo echo "<?php phpinfo();" > $WEB_ROOT"/index.php"
-sudo mkdir -p $HOME"/.httpd/vhosts"
-sudo touch $HOME"/.httpd/vhosts/default.conf"
-
-#------------------------------
-# Apache
-#------------------------------
-
-# Update http conf
-## Fetch new default if not exists
-sudo curl -o /etc/apache2/httpd.conf.default https://raw.githubusercontent.com/stevenmaguire/apache2-conf-osx/master/10.10/httpd.conf.default
-sudo curl -o /etc/apache2/extra/httpd-vhosts.conf https://raw.githubusercontent.com/stevenmaguire/apache2-conf-osx/master/10.10/httpd-vhosts.conf
-
-## Replace current with default
-sudo cp /etc/apache2/httpd.conf.default /etc/apache2/httpd.conf
-
-# Replace config defaults with custom defaults
-sudo sed -i "s|User _www|User "$USER"|g" /etc/apache2/httpd.conf
-sudo sed -i "s|Group _www|Group "$GROUP"|g" /etc/apache2/httpd.conf
-sudo sed -i "s|#LoadModule vhost_alias_module|LoadModule vhost_alias_module|g" /etc/apache2/httpd.conf
-sudo sed -i "s|#LoadModule rewrite_module|LoadModule rewrite_module|g" /etc/apache2/httpd.conf
-sudo sed -i "s|#LoadModule php5_module libexec/apache2/libphp5.so|LoadModule php5_module /usr/local/lib/libphp5.so|g" /etc/apache2/httpd.conf
-sudo sed -i "s|/Library/WebServer/Documents|"$WEB_ROOT"|g" /etc/apache2/httpd.conf
-sudo sed -i "s|#Include /private/etc/apache2/extra/httpd-vhosts.conf|Include /private/etc/apache2/extra/httpd-vhosts.conf|g" /etc/apache2/httpd.conf
-
-sudo sed -i "s|/Library/WebServer/Documents|"$WEB_ROOT"|g" /etc/apache2/extra/httpd-vhosts.conf
-echo "Include $HOME/.httpd/vhosts/*.conf" | sudo tee -a /etc/apache2/extra/httpd-vhosts.conf
-
-# Add current user to apache group
-#dseditgroup -o edit -a $USER -t user _www
-
-sudo apachectl restart
-
-#------------------------------
 # MySQL
 #------------------------------
 brew install mysql
 unset TMPDIR
-#mysqld --initialize
 mysql.server start
 
 
