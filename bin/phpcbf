@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ -f ./vendor/bin/phpcbf ] && hash ./vendor/bin/phpcbf 2> /dev/null; then
+    ./vendor/bin/phpcbf "$@"
+else
+    echo "phpcbf not found"
+fi

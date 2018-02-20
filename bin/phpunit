@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ -f ./vendor/bin/phpunit ] && hash ./vendor/bin/phpunit 2> /dev/null; then
+    ./vendor/bin/phpunit "$@"
+else
+    echo "phpunit not found"
+fi
