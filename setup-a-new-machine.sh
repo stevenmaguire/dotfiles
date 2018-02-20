@@ -5,14 +5,13 @@
 
 # read migration.md where more migrationy tips are!
 
+# homebrew!
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
 # Xcode!
 # Download Xcode and command line tools via App Store
 xcode-select --install
 
-# homebrew!
-# (google machines are funny so i have to do this. everyone else should use the regular thang)
-mkdir $HOME/.homebrew && curl -L https://github.com/mxcl/homebrew/tarball/master | tar xz --strip 1 -C $HOME/.homebrew
-export PATH=$HOME/.homebrew/bin:$HOME/.homebrew/sbin:$PATH
 # install all the things
 ./brew.sh
 ./brew-cask.sh
