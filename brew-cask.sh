@@ -1,71 +1,70 @@
 
 
 # to maintain cask ....
-#     brew update && brew upgrade brew-cask && brew cleanup && brew cask cleanup`
+#     brew update && brew cleanup && brew cask cleanup
 
-
-# Install native apps
-
-brew install caskroom/cask/brew-cask
+brew tap caskroom/cask
 brew tap caskroom/versions
 
+## Install native apps
+
 # daily
-brew cask install 1password
+# brew cask install 1password
 brew cask install adobe-creative-cloud
 brew cask install cloud
-brew cask install dashlane
+# brew cask install dashlane
 brew cask install dropbox
 brew cask install evernote
-brew cask install google-drive
-brew cask install rescuetime
-brew cask install screenhero
-brew cask install viscosity
+# brew cask install google-drive
+# brew cask install rescuetime
+# brew cask install screenhero
+# brew cask install viscosity
 
 # dev
-brew cask install android-studio
-brew cask install atom
+# brew cask install android-studio
+# brew cask install atom
 brew cask install balsamiq-mockups
 brew cask install ccmenu
-brew cask install hackhands
-brew cask install imagealpha
-brew cask install imageoptim
-brew cask install java
-brew cask install dockertoolbox
+# brew cask install hackhands
+# brew cask install imagealpha
+# brew cask install imageoptim
+# brew cask install java
+# brew cask install dockertoolbox
 brew cask install postman
 
 # brew cask install mamp
-brew cask install mysqlworkbench
+# brew cask install mysqlworkbench
 brew cask install sequel-pro
 sudo brew cask install sublime-text3
-brew cask install vagrant
-brew cask install visual-studio-code
-sudo brew cask install virtualbox
-brew cask install psequel
+# brew cask install vagrant
+# brew cask install visual-studio-code
+# sudo brew cask install virtualbox
+# brew cask install psequel
 
 # browsers
-brew cask install google-chrome-canary
+# brew cask install google-chrome-canary
 brew cask install google-chrome
-brew cask install firefox
-brew cask install firefox-nightly --force
-brew cask install webkit-nightly --force
-brew cask install chromium --force
-brew cask install torbrowser
+# brew cask install firefox
+# brew cask install firefox-nightly --force
+# brew cask install webkit-nightly --force
+# brew cask install chromium --force
+# brew cask install torbrowser
 
 # collaboration
 # brew cask install adium
-brew cask install skype
+# brew cask install skype
 brew cask install slack
 
 # less often
-brew cask install appzapper
-brew cask install disk-inventory-x
-brew cask install gimp
-brew cask install musicbrainz-picard
-brew cask install screenflow
+# brew cask install appzapper
+# brew cask install disk-inventory-x
+# brew cask install gimp
+# brew cask install musicbrainz-picard
+# brew cask install screenflow
 brew cask install transmit
 brew cask install unrarx
-brew cask install vlc
-brew cask install ynab
+# brew cask install vlc
+# brew cask install ynab
 
 # On cask, need to investigate
 # brew cask install alfred
