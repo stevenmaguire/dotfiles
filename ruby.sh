@@ -1,6 +1,5 @@
 # Install and configure ruby and rails environment
 
-# brew install ruby
 brew install rbenv
 brew install ruby-build
 

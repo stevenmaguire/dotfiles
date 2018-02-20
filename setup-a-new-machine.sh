@@ -16,20 +16,19 @@ xcode-select --install
 ./brew.sh
 ./brew-cask.sh
 
-# Create code home
-mkdir -p $HOME/Projects
-sudo chown -R $(whoami) $HOME/Projects
+# Storage
+./storage.sh
 
-# PHP, MySQL, Apache!
-./lamp.sh
+# PHP
+./php.sh
 
-# Ruby and rails
+# Ruby
 ./ruby.sh
 
 # Dropbox symlinks
 ./dropbox.sh
 
-# Dropbox symlinks
+# Git helpers
 ./git.sh
 
 # for the c alias (syntax highlighted cat)
@@ -39,7 +38,7 @@ sudo easy_install Pygments
 BASHPATH=$(brew --prefix)/bin/bash
 sudo bash -c 'echo $BASHPATH >> /etc/shells'
 # Change to the new shell
-chsh -s /usr/local/bin/bash 
+chsh -s /usr/local/bin/bash
 echo $BASH_VERSION # should be 4.x not the old 3.2.X
 
 # Later, confirm iterm settings aren't conflicting.

@@ -1,4 +1,4 @@
-# Install and configure php, apache, mysql using Homebrew
+# Install and configure php
 
 ## http://getgrav.org/blog/mac-os-x-apache-setup-multiple-php-versions
 
@@ -91,14 +91,6 @@ sudo mkdir -p /usr/local/lib
 sudo touch /usr/local/lib/libphp5.so
 
 #------------------------------
-# MySQL
-#------------------------------
-brew install mysql
-unset TMPDIR
-mysql.server start
-
-
-#------------------------------
 # Use PHP 7.0
 #------------------------------
 
@@ -116,36 +108,6 @@ fi
 unset COMPOSER_BINARY
 
 #------------------------------
-# Install phpunit
-#------------------------------
-PHPUNIT_BINARY="./bin/phpunit"
-if [ ! -f $PHPUNIT_BINARY ]; then
-    wget https://phar.phpunit.de/phpunit.phar
-    chmod +x phpunit.phar
-    sudo mv phpunit.phar $PHPUNIT_BINARY
-fi
-unset PHPUNIT_BINARY
-
-#------------------------------
-# Install php code sniffer
-#------------------------------
-CS_BINARY="./bin/phpcs"
-if [ ! -f $CS_BINARY ]; then
-    curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
-    chmod +x phpcs.phar
-    sudo mv phpcs.phar $CS_BINARY
-fi
-unset CS_BINARY
-
-CSF_BINARY="./bin/phpcbf"
-if [ ! -f $CSF_BINARY ]; then
-    curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcbf.phar
-    chmod +x phpcbf.phar
-    sudo mv phpcbf.phar $CSF_BINARY
-fi
-unset CSF_BINARY
-
-#------------------------------
 # Install gulp globally
 #------------------------------
 sudo npm install -g gulp
@@ -156,7 +118,3 @@ sudo npm install -g gulp
 composer global require laravel/installer
 composer global require laravel/spark-installer
 
-#------------------------------
-# Some helpful tips
-#------------------------------
-echo "Tip: Run mysql_secure_installation to configure mysql users"

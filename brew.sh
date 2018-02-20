@@ -46,13 +46,9 @@ brew install vim --override-system-vi
 
 # Install other useful binaries
 brew install ack
-brew install redis
-brew install beanstalkd
-brew install postgres
-brew install mysql
 brew install git
 brew install imagemagick --with-webp
-brew install node 	# This installs `npm` too using the recommended installation method
+brew install node   # This installs `npm` too using the recommended installation method
 brew install pv
 brew install rename
 brew install tree
