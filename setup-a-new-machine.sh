@@ -25,8 +25,8 @@ xcode-select --install
 # Ruby
 ./ruby.sh
 
-# Dropbox symlinks
-./dropbox.sh
+# JavaScript
+./js.sh
 
 # Git helpers
 ./git.sh

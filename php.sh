@@ -108,11 +108,6 @@ fi
 unset COMPOSER_BINARY
 
 #------------------------------
-# Install gulp globally
-#------------------------------
-sudo npm install -g gulp
-
-#------------------------------
 # Install laravel tools
 #------------------------------
 composer global require laravel/installer
