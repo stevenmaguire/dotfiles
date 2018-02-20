@@ -73,6 +73,7 @@ brew install php71-opcache
 brew install php71-apcu
 brew install php71-xdebug
 brew install php71-mcrypt
+brew install php71-mongodb
 sudo sed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" $(brew --prefix)/etc/php/7.1/php.ini
 
 # Install APC and Xdebug for PHP 7.2
