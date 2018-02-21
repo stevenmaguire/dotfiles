@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ~/.macos — http://mths.be/macos
+# macos.sh — http://mths.be/macos
 
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
@@ -18,25 +18,25 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 if hash dockutil 2>/dev/null; then
   declare -a remove_apps=(
-	'App Store'
-	'Calendar'
-	'Contacts'
-	'FaceTime'
-	'iBooks'
-	'iTunes'
-	'Launchpad'
-	'Mail'
-	'Maps'
-	'Notes'
-	'Photos'
-	'Reminders'
-	'Safari'
-	'Siri'
+    'App Store'
+    'Calendar'
+    'Contacts'
+    'FaceTime'
+    'iBooks'
+    'iTunes'
+    'Launchpad'
+    'Mail'
+    'Maps'
+    'Notes'
+    'Photos'
+    'Reminders'
+    'Safari'
+    'Siri'
   )
   for i in "${remove_apps[@]}"; do
-	if dockutil --find "$i" > /dev/null; then
-	  dockutil --remove "$i"
-	fi
+    if dockutil --find "$i" > /dev/null; then
+      dockutil --remove "$i"
+    fi
   done
 
 
@@ -53,18 +53,18 @@ if hash dockutil 2>/dev/null; then
 
   declare initial_position=4
   declare -a add_apps=(
-	'System Preferences'
-	'Slack'
-	'Google Chrome'
-	'Sublime Text'
-	'Sequel Pro'
-	'Postico'
-	'Transmit'
+    'System Preferences'
+    'Slack'
+    'Google Chrome'
+    'Sublime Text'
+    'Sequel Pro'
+    'Postico'
+    'Transmit'
   )
   for i in "${add_apps[@]}"; do
-	if ! dockutil --find "$i" > /dev/null; then
-	  dockutil --add "/Applications/$i.app"
-	fi
+    if ! dockutil --find "$i" > /dev/null; then
+      dockutil --add "/Applications/$i.app"
+    fi
     dockutil --move "$i" --position $initial_position
     initial_position=$(expr $initial_position + 1)
   done
@@ -384,9 +384,9 @@ file=/Applications/Dropbox.app/Contents/Resources/emblem-dropbox-uptodate.icns
 # Expand the following File Info panes:
 # “General”, “Open with”, and “Sharing & Permissions”
 defaults write com.apple.finder FXInfoPanesExpanded -dict \
-	General -bool true \
-	OpenWith -bool true \
-	Privileges -bool true
+    General -bool true \
+    OpenWith -bool true \
+    Privileges -bool true
 
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
@@ -610,35 +610,35 @@ defaults write com.apple.mail SpellCheckingBehavior -string "NoSpellCheckingEnab
 sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
 # Change indexing order and disable some search results
 # Yosemite-specific search results (remove them if you are using macOS 10.9 or older):
-# 	MENU_DEFINITION
-# 	MENU_CONVERSION
-# 	MENU_EXPRESSION
-# 	MENU_SPOTLIGHT_SUGGESTIONS (send search queries to Apple)
-# 	MENU_WEBSEARCH             (send search queries to Apple)
-# 	MENU_OTHER
+#   MENU_DEFINITION
+#   MENU_CONVERSION
+#   MENU_EXPRESSION
+#   MENU_SPOTLIGHT_SUGGESTIONS (send search queries to Apple)
+#   MENU_WEBSEARCH             (send search queries to Apple)
+#   MENU_OTHER
 defaults write com.apple.spotlight orderedItems -array \
-	'{"enabled" = 1;"name" = "APPLICATIONS";}' \
-	'{"enabled" = 1;"name" = "SYSTEM_PREFS";}' \
-	'{"enabled" = 1;"name" = "DIRECTORIES";}' \
-	'{"enabled" = 1;"name" = "PDF";}' \
-	'{"enabled" = 1;"name" = "FONTS";}' \
-	'{"enabled" = 0;"name" = "DOCUMENTS";}' \
-	'{"enabled" = 0;"name" = "MESSAGES";}' \
-	'{"enabled" = 0;"name" = "CONTACT";}' \
-	'{"enabled" = 0;"name" = "EVENT_TODO";}' \
-	'{"enabled" = 0;"name" = "IMAGES";}' \
-	'{"enabled" = 0;"name" = "BOOKMARKS";}' \
-	'{"enabled" = 0;"name" = "MUSIC";}' \
-	'{"enabled" = 0;"name" = "MOVIES";}' \
-	'{"enabled" = 0;"name" = "PRESENTATIONS";}' \
-	'{"enabled" = 0;"name" = "SPREADSHEETS";}' \
-	'{"enabled" = 0;"name" = "SOURCE";}' \
-	'{"enabled" = 0;"name" = "MENU_DEFINITION";}' \
-	'{"enabled" = 0;"name" = "MENU_OTHER";}' \
-	'{"enabled" = 0;"name" = "MENU_CONVERSION";}' \
-	'{"enabled" = 0;"name" = "MENU_EXPRESSION";}' \
-	'{"enabled" = 0;"name" = "MENU_WEBSEARCH";}' \
-	'{"enabled" = 0;"name" = "MENU_SPOTLIGHT_SUGGESTIONS";}'
+    '{"enabled" = 1;"name" = "APPLICATIONS";}' \
+    '{"enabled" = 1;"name" = "SYSTEM_PREFS";}' \
+    '{"enabled" = 1;"name" = "DIRECTORIES";}' \
+    '{"enabled" = 1;"name" = "PDF";}' \
+    '{"enabled" = 1;"name" = "FONTS";}' \
+    '{"enabled" = 0;"name" = "DOCUMENTS";}' \
+    '{"enabled" = 0;"name" = "MESSAGES";}' \
+    '{"enabled" = 0;"name" = "CONTACT";}' \
+    '{"enabled" = 0;"name" = "EVENT_TODO";}' \
+    '{"enabled" = 0;"name" = "IMAGES";}' \
+    '{"enabled" = 0;"name" = "BOOKMARKS";}' \
+    '{"enabled" = 0;"name" = "MUSIC";}' \
+    '{"enabled" = 0;"name" = "MOVIES";}' \
+    '{"enabled" = 0;"name" = "PRESENTATIONS";}' \
+    '{"enabled" = 0;"name" = "SPREADSHEETS";}' \
+    '{"enabled" = 0;"name" = "SOURCE";}' \
+    '{"enabled" = 0;"name" = "MENU_DEFINITION";}' \
+    '{"enabled" = 0;"name" = "MENU_OTHER";}' \
+    '{"enabled" = 0;"name" = "MENU_CONVERSION";}' \
+    '{"enabled" = 0;"name" = "MENU_EXPRESSION";}' \
+    '{"enabled" = 0;"name" = "MENU_WEBSEARCH";}' \
+    '{"enabled" = 0;"name" = "MENU_SPOTLIGHT_SUGGESTIONS";}'
 # Load new settings before rebuilding the index
 killall mds > /dev/null 2>&1
 # Make sure indexing is enabled for the main volume
@@ -658,43 +658,43 @@ defaults write com.apple.terminal StringEncodings -array 4
 
 # tell application "Terminal"
 
-# 	local allOpenedWindows
-# 	local initialOpenedWindows
-# 	local windowID
-# 	set themeName to "Solarized Dark xterm-256color"
+#   local allOpenedWindows
+#   local initialOpenedWindows
+#   local windowID
+#   set themeName to "Solarized Dark xterm-256color"
 
-# 	(* Store the IDs of all the open terminal windows. *)
-# 	set initialOpenedWindows to id of every window
+#   (* Store the IDs of all the open terminal windows. *)
+#   set initialOpenedWindows to id of every window
 
-# 	(* Open the custom theme so that it gets added to the list
-# 	   of available terminal themes (note: this will open two
-# 	   additional terminal windows). *)
-# 	do shell script "open '$HOME/init/" & themeName & ".terminal'"
+#   (* Open the custom theme so that it gets added to the list
+#      of available terminal themes (note: this will open two
+#      additional terminal windows). *)
+#   do shell script "open '$HOME/init/" & themeName & ".terminal'"
 
-# 	(* Wait a little bit to ensure that the custom theme is added. *)
-# 	delay 1
+#   (* Wait a little bit to ensure that the custom theme is added. *)
+#   delay 1
 
-# 	(* Set the custom theme as the default terminal theme. *)
-# 	set default settings to settings set themeName
+#   (* Set the custom theme as the default terminal theme. *)
+#   set default settings to settings set themeName
 
-# 	(* Get the IDs of all the currently opened terminal windows. *)
-# 	set allOpenedWindows to id of every window
+#   (* Get the IDs of all the currently opened terminal windows. *)
+#   set allOpenedWindows to id of every window
 
-# 	repeat with windowID in allOpenedWindows
+#   repeat with windowID in allOpenedWindows
 
-# 		(* Close the additional windows that were opened in order
-# 		   to add the custom theme to the list of terminal themes. *)
-# 		if initialOpenedWindows does not contain windowID then
-# 			close (every window whose id is windowID)
+#       (* Close the additional windows that were opened in order
+#          to add the custom theme to the list of terminal themes. *)
+#       if initialOpenedWindows does not contain windowID then
+#           close (every window whose id is windowID)
 
-# 		(* Change the theme for the initial opened terminal windows
-# 		   to remove the need to close them in order for the custom
-# 		   theme to be applied. *)
-# 		else
-# 			set current settings of tabs of (every window whose id is windowID) to settings set themeName
-# 		end if
+#       (* Change the theme for the initial opened terminal windows
+#          to remove the need to close them in order for the custom
+#          theme to be applied. *)
+#       else
+#           set current settings of tabs of (every window whose id is windowID) to settings set themeName
+#       end if
 
-# 	end repeat
+#   end repeat
 
 # end tell
 
@@ -841,27 +841,27 @@ defaults write com.google.Chrome.canary PMPrintingExpandedStateForPrint2 -bool t
 ###############################################################################
 
 for app in "Activity Monitor" \
-	"Address Book" \
-	"Calendar" \
-	"cfprefsd" \
-	"Contacts" \
-	"Dock" \
-	"Finder" \
-	"Google Chrome Canary" \
-	"Google Chrome" \
-	"Mail" \
-	"Messages" \
-	"Opera" \
-	"Photos" \
-	"Safari" \
-	"SizeUp" \
-	"Spectacle" \
-	"SystemUIServer" \
-	"Terminal" \
-	"Transmission" \
-	"Tweetbot" \
-	"Twitter" \
-	"iCal"; do	
-	killall "${app}" &> /dev/null
+    "Address Book" \
+    "Calendar" \
+    "cfprefsd" \
+    "Contacts" \
+    "Dock" \
+    "Finder" \
+    "Google Chrome Canary" \
+    "Google Chrome" \
+    "Mail" \
+    "Messages" \
+    "Opera" \
+    "Photos" \
+    "Safari" \
+    "SizeUp" \
+    "Spectacle" \
+    "SystemUIServer" \
+    "Terminal" \
+    "Transmission" \
+    "Tweetbot" \
+    "Twitter" \
+    "iCal"; do
+    killall "${app}" &> /dev/null
 done
 echo "Done. Note that some of these changes require a logout/restart to take effect."
