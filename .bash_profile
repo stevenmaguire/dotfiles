@@ -1,5 +1,5 @@
 # homebrew basics
-PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:~/bin:$PATH
+export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:~/bin:$PATH
 
 # rbenv
 eval "$(rbenv init -)"
@@ -88,3 +88,8 @@ fi
 ##
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+#--------------------------------------
+# Cleanup PATH to remove duplicates
+#--------------------------------------
+export PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
