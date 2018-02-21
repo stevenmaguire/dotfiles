@@ -7,7 +7,6 @@ brew tap caskroom/versions
 ## Install native apps
 
 # daily
-brew cask install adobe-creative-cloud
 brew cask install dropbox
 brew cask install evernote
 
@@ -31,5 +30,6 @@ brew cask install google-chrome
 brew cask install slack
 
 # less often
+brew cask install adobe-creative-cloud
 brew cask install transmit
 brew cask install unrarx

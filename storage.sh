@@ -1,14 +1,9 @@
 # Install and configure storage (databases, cache, queues)
 
-# Ask for the administrator password upfront
-sudo -v
-
 #------------------------------
 # MySQL
 #------------------------------
 brew install mysql
-unset TMPDIR
-mysql.server start
 
 #------------------------------
 # PostgreSQL

@@ -1,5 +1,5 @@
 # homebrew basics
-# PATH=~/.homebrew/bin:~/.homebrew/sbin:~/bin:$PATH
+PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:~/bin:$PATH
 
 # rbenv
 eval "$(rbenv init -)"

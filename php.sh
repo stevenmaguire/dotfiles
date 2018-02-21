@@ -5,7 +5,7 @@
 # Ask for the administrator password upfront
 sudo -v
 
-# Keep-alive: update existing `sudo` time stamp until `.osx` has finished
+# Keep-alive: update existing `sudo` time stamp until the script has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 function gettimezone() {
@@ -88,8 +88,8 @@ sudo sed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" $(brew --p
 brew cleanup
 
 # Create module path
-sudo mkdir -p /usr/local/lib
-sudo touch /usr/local/lib/libphp5.so
+sudo mkdir -p $(brew --prefix)/lib
+sudo touch $(brew --prefix)/lib/libphp5.so
 
 #------------------------------
 # Use PHP 7.0
@@ -98,7 +98,7 @@ sudo touch /usr/local/lib/libphp5.so
 ./bin/sphp 70
 
 #------------------------------
-# Install composer
+# Install composer, and two tools (assuming the symlinks haven't run yet)
 #------------------------------
 COMPOSER_BINARY="./bin/composer"
 if [ ! -f $COMPOSER_BINARY ]; then
@@ -106,11 +106,8 @@ if [ ! -f $COMPOSER_BINARY ]; then
     chmod +x composer.phar
     sudo mv composer.phar $COMPOSER_BINARY
 fi
-unset COMPOSER_BINARY
-
-#------------------------------
 # Install laravel tools
-#------------------------------
-composer global require laravel/installer
-composer global require laravel/spark-installer
+eval "$COMPOSER_BINARY global require laravel/installer"
+eval "$COMPOSER_BINARY global require laravel/spark-installer"
+unset COMPOSER_BINARY
 

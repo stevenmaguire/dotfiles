@@ -9,5 +9,4 @@ rbenv install 2.3.6
 rbenv install 2.4.3
 rbenv install 2.5.0
 
-gem install bundler
 rbenv rehash
