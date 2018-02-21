@@ -25,5 +25,6 @@ Thumbs.db
 # Compiled Python files
 *.pyc
 
+/libphp5.so
 /play-button-itunes-patch
 /z

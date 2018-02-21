@@ -11,9 +11,6 @@ alias projects="cd ~/Projects"
 
 alias rm="rm -i"
 
-# setting up the sublime symlink
-ln -sf "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ~/bin/subl
-
 # i <3 u cask
 alias cask='brew cask'
 
@@ -26,7 +23,6 @@ alias brwe=brew
 # be nice
 alias please=sudo
 alias hosts='sudo $EDITOR /etc/hosts'
-alias vhosts='sudo $EDITOR $HOME/.httpd/vhosts/default.conf'
 
 # composer
 alias composer-update='sudo php ~/bin/composer self-update'

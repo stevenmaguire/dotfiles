@@ -130,15 +130,32 @@ print_success() {
     printf "\e[0;32m  [✔] $1\e[0m\n"
 }
 
-
-
-
-
-
 #
 # actual symlink stuff
 #
 
+##################################################
+# Symlinking a few of the things
+##################################################
+
+# ssh keys
+mkdir -p $HOME"/.ssh"
+ln -sf $HOME"/Dropbox/Stevil/ssh/id_rsa" $HOME"/.ssh/id_rsa"
+ln -sf $HOME"/Dropbox/Stevil/ssh/id_rsa.pub" $HOME"/.ssh/id_rsa.pub"
+
+# Sequel Pro
+rm -rf $HOME"/Library/Application Support/Sequel Pro/Data/Favorites.plist"
+ln -sf $HOME"/Dropbox/Stevil/ssh/favorites/sequel-pro-favorites.plist" $HOME"/Library/Application Support/Sequel Pro/Data/Favorites.plist"
+
+# Sublime Text
+rm -rf $HOME"/Library/Application Support/Sublime Text 3/Installed Packages"
+ln -sf $HOME"/Dropbox/Stevil/Workbench/sublime-text-3/Installed Packages" $HOME"/Library/Application Support/Sublime Text 3"
+rm -rf $HOME"/Library/Application Support/Sublime Text 3/Packages"
+ln -sf $HOME"/Dropbox/Stevil/Workbench/sublime-text-3/Packages" $HOME"/Library/Application Support/Sublime Text 3"
+
+##################################################
+# Symlinking all the things
+##################################################
 
 # finds all .dotfiles in this folder
 declare -a FILES_TO_SYMLINK=$(find . -type f -maxdepth 1 -name ".*" -not -name .DS_Store -not -name .git -not -name .osx | sed -e 's|//|/|' | sed -e 's|./.|.|')
