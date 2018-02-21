@@ -3,5 +3,5 @@
 if [ -f ./vendor/bin/phpcs ] && hash ./vendor/bin/phpcs 2> /dev/null; then
     ./vendor/bin/phpcs "$@"
 else
-    echo "phpcs not found"
+    echo "phpcs not found; are you working in a php project with phpcs installed via composer?"
 fi

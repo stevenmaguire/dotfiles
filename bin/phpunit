@@ -3,5 +3,5 @@
 if [ -f ./vendor/bin/phpunit ] && hash ./vendor/bin/phpunit 2> /dev/null; then
     ./vendor/bin/phpunit "$@"
 else
-    echo "phpunit not found"
+    echo "phpunit not found; are you working in a php project with phpunit installed via composer?"
 fi

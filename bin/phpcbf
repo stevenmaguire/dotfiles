@@ -3,5 +3,5 @@
 if [ -f ./vendor/bin/phpcbf ] && hash ./vendor/bin/phpcbf 2> /dev/null; then
     ./vendor/bin/phpcbf "$@"
 else
-    echo "phpcbf not found"
+    echo "phpcbf not found; are you working in a php project with phpcbf installed via composer?"
 fi
