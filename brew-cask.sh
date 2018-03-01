@@ -31,5 +31,6 @@ brew cask install slack
 
 # less often
 brew cask install adobe-creative-cloud
+brew cask install imageoptim
 brew cask install transmit
 brew cask install unrarx
