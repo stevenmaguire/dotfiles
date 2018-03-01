@@ -13,3 +13,6 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # Configure Composer path
 export PATH="~/.composer/vendor/bin:$PATH"
+
+# Configure npm to use the new directory path
+export NPM_CONFIG_PREFIX=~/.npm-global

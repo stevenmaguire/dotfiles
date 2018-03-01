@@ -6,7 +6,7 @@ brew install node
 mkdir ~/.npm-global
 
 # Configure npm to use the new directory path:
-npm config set prefix '~/.npm-global'
+export NPM_CONFIG_PREFIX=~/.npm-global
 
 #------------------------------
 # Install gulp globally
