@@ -9,6 +9,8 @@ mkdir ~/.npm-global
 export NPM_CONFIG_PREFIX=~/.npm-global
 
 #------------------------------
-# Install gulp globally
+# Install gulp & bower globally
 #------------------------------
+sudo chown -R $(whoami) ~/.cache
+sudo chown -R $(whoami) ~/.config
 npm install -g gulp bower
