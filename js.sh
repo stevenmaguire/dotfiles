@@ -5,4 +5,4 @@ brew install node
 #------------------------------
 # Install gulp globally
 #------------------------------
-sudo npm install -g gulp
+sudo npm install -g gulp bower
