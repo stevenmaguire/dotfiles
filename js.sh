@@ -8,9 +8,6 @@ mkdir ~/.npm-global
 # Configure npm to use the new directory path:
 export NPM_CONFIG_PREFIX=~/.npm-global
 
-#------------------------------
-# Install gulp & bower globally
-#------------------------------
+# Make sure I am the owner of these config directories used by package managers
 sudo chown -R $(whoami) ~/.cache
 sudo chown -R $(whoami) ~/.config
-npm install -g gulp bower

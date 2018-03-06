@@ -1,7 +1,11 @@
 #!/bin/bash
 
-if [ -f ./vendor/bin/phpcs ] && hash ./vendor/bin/phpcs 2> /dev/null; then
-    ./vendor/bin/phpcs "$@"
+PHPCS_PATH="$PWD/vendor/bin/phpcs"
+
+if [ -f "$PHPCS_PATH" ] && hash "$PHPCS_PATH" 2> /dev/null; then
+    eval "$PHPCS_PATH $@"
 else
-    echo "phpcs not found; are you working in a php project with phpcs installed via composer?"
+    echo "phpcs not found at $PHPCS_PATH; are you working in a php project with phpcs installed via composer?"
 fi
+
+unset PHPCS_PATH
