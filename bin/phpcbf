@@ -1,0 +1,11 @@
+#!/bin/bash
+
+PHPCBF_PATH="$PWD/vendor/bin/phpcbf"
+
+if [ -f "$PHPCBF_PATH" ] && hash "$PHPCBF_PATH" 2> /dev/null; then
+    eval "$PHPCBF_PATH $@"
+else
+    echo "phpcbf not found at $PHPCBF_PATH; are you working in a php project with phpcbf installed via composer?"
+fi
+
+unset PHPCBF_PATH

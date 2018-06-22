@@ -1,10 +1,6 @@
 # homebrew basics
-PATH=~/.homebrew/bin:~/.homebrew/sbin:~/bin:$PATH
+export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:~/bin:$PATH
 
-# dotnet
-#source dnvm.sh
-
-# Google cloud
 
 # Composer binaries
 export PATH=~/.composer/vendor/bin:$PATH
@@ -13,9 +9,6 @@ export PATH=~/.composer/vendor/bin:$PATH
 export RBENV_ROOT=/Users/stevenmaguire/.homebrew/var/rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
-
-# The next line enables shell command completion for gcloud.
-#source "$HOME/.google/google-cloud-sdk/completion.bash.inc"
 
 # Load ~/.extra, ~/.bash_prompt, ~/.exports, ~/.aliases and ~/.functions
 # ~/.extra can be used for settings you don’t want to commit
@@ -61,13 +54,12 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # bash completion.
 if which brew > /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
-    source "$(brew --prefix)/share/bash-completion/bash_completion";
-elif [ -f /etc/bash_completion ]; then
-    source /etc/bash_completion;
-fi;
+    . "$(brew --prefix)/share/bash-completion/bash_completion";
+fi
 
-# homebrew completion
-source `brew --repository`/Library/Contributions/brew_bash_completion.sh
+if which brew > /dev/null && [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+fi
 
 # Enable tab completion for `g` by marking it as an alias for `git`
 if type _git &> /dev/null && [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
@@ -93,11 +85,17 @@ shopt -s nocaseglob;
 shopt -s cdspell;
 
 # z beats cd most of the time.
-#   github.com/rupa/z
-source ~/code/z/z.sh
+if which brew > /dev/null && [ -f "$(brew --prefix)/etc/profile.d/z.sh" ]; then
+    . "$(brew --prefix)/etc/profile.d/z.sh";
+fi
 
 ##
 ## hooking in other apps…
 ##
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+#--------------------------------------
+# Cleanup PATH to remove duplicates
+#--------------------------------------
+export PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
