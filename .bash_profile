@@ -7,10 +7,12 @@ PATH=~/.homebrew/bin:~/.homebrew/sbin:~/bin:$PATH
 # Google cloud
 
 # Composer binaries
-PATH=~/.composer/vendor/bin:$PATH
+export PATH=~/.composer/vendor/bin:$PATH
 
 # Ruby env
 export RBENV_ROOT=/Users/stevenmaguire/.homebrew/var/rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
 # The next line enables shell command completion for gcloud.
 #source "$HOME/.google/google-cloud-sdk/completion.bash.inc"
