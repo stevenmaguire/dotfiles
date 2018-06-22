@@ -19,83 +19,51 @@ function gettimezone() {
 #------------------------------
 
 # Install PHP
-brew tap homebrew/homebrew-php
-brew install php54
-brew unlink php54
-brew install php55
-brew unlink php55
-brew install php56
-brew unlink php56
-brew install php70
-brew unlink php70
-brew install php71
-brew unlink php71
-brew install php72
-brew unlink php72
+brew tap homebrew/core
 
-# Install APC and Xdebug for PHP 5.4
-./bin/sphp 54
-brew install php54-apc
-brew install php54-xdebug
-brew install php54-mcrypt
-brew install php54-mongo
-sudo sed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" $(brew --prefix)/etc/php/5.4/php.ini
+brew install brew-php-switcher
+brew install jq
 
-# Install APC and Xdebug for PHP 5.5
-./bin/sphp 55
-brew install php55-opcache
-brew install php55-apcu
-brew install php55-xdebug
-brew install php55-mcrypt
-brew install php55-mongo
-sudo sed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" $(brew --prefix)/etc/php/5.5/php.ini
+declare -r php_version_json='[
+    {"version": "5.6", "packages": ["xdebug-2.5.5","apcu-4.0.8"]},
+    {"version": "7.0", "packages": ["xdebug","apcu-5.1.11"]},
+    {"version": "7.1", "packages": ["xdebug","apcu-5.1.11"]},
+    {"version": "7.2", "packages": ["xdebug","apcu-5.1.11"]}
+]'
 
-# Install APC and Xdebug for PHP 5.6
-./bin/sphp 56
-brew install php56-opcache
-brew install php56-apcu
-brew install php56-xdebug
-brew install php56-mcrypt
-brew install php56-mongo
-sudo sed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" $(brew --prefix)/etc/php/5.6/php.ini
+#------------------------------
+# Install PHP Versions
+#------------------------------
+echo ${php_version_json} | jq -c '.[]' | while read php; do
+    version=$(echo ${php} | jq -r '.version')
 
-# Install APC and Xdebug for PHP 7.0
-./bin/sphp 70
-brew install php70-opcache
-brew install php70-apcu
-brew install php70-xdebug
-brew install php70-mcrypt
-sudo sed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" $(brew --prefix)/etc/php/7.0/php.ini
+    echo "Installing PHP Version $version"
 
-# Install APC and Xdebug for PHP 7.1
-./bin/sphp 71
-brew install php71-opcache
-brew install php71-apcu
-brew install php71-xdebug
-brew install php71-mcrypt
-brew install php71-mongodb
-sudo sed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" $(brew --prefix)/etc/php/7.1/php.ini
+    $(brew install php@$version)
+    sudo sed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" "$(brew --prefix)/etc/php/$version/php.ini"
+done
 
-# Install APC and Xdebug for PHP 7.2
-./bin/sphp 72
-brew install php72-opcache
-brew install php72-apcu
-brew install php72-xdebug
-brew install php72-intl
-sudo sed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" $(brew --prefix)/etc/php/7.2/php.ini
+#------------------------------
+# Install PHP Packages
+#------------------------------
+echo ${php_version_json} | jq -c '.[]' | while read php; do
+    version=$(echo ${php} | jq -r '.version')
+    packages=$(echo ${php} | jq -r '.packages')
 
-# Remove outdated versions from the cellar
-brew cleanup
+    brew-php-switcher ${version}
 
-# Create module path
-sudo mkdir -p $(brew --prefix)/lib
-sudo touch $(brew --prefix)/lib/libphp5.so
+    echo "Installing PHP Packages for Version $version"
+
+    echo ${packages} | jq -r '.[]' | while read package; do
+        echo "Installing PHP Pacakage $package"
+        pecl install ${package}
+    done
+done
 
 #------------------------------
 # Use PHP 7.0
 #------------------------------
-
-./bin/sphp 70
+brew-php-switcher 7.0
 
 #------------------------------
 # Install composer, and two tools (assuming the symlinks haven't run yet)
