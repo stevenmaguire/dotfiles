@@ -9,5 +9,7 @@ mkdir ~/.npm-global
 export NPM_CONFIG_PREFIX=~/.npm-global
 
 # Make sure I am the owner of these config directories used by package managers
+touch ~/.cache
+touch ~/.config
 sudo chown -R $(whoami) ~/.cache
 sudo chown -R $(whoami) ~/.config
