@@ -6,8 +6,8 @@ export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:~/bin:$PATH
 export PATH=~/.composer/vendor/bin:$PATH
 
 # Ruby env
-export RBENV_ROOT=/Users/stevenmaguire/.homebrew/var/rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
+export RBENV_ROOT="$(brew --prefix)/var/rbenv"
+export PATH="$(brew --prefix)/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
 # Load ~/.extra, ~/.bash_prompt, ~/.exports, ~/.aliases and ~/.functions
