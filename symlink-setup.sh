@@ -142,10 +142,11 @@ print_success() {
 mkdir -p $HOME"/.ssh"
 ln -sf $HOME"/Dropbox/Stevil/ssh/id_rsa" $HOME"/.ssh/id_rsa"
 ln -sf $HOME"/Dropbox/Stevil/ssh/id_rsa.pub" $HOME"/.ssh/id_rsa.pub"
+chmod 400 $HOME"/.ssh/id_rsa"
 
 # Sequel Pro
 rm -rf $HOME"/Library/Application Support/Sequel Pro/Data/Favorites.plist"
-ln -sf $HOME"/Dropbox/Stevil/ssh/favorites/sequel-pro-favorites.plist" $HOME"/Library/Application Support/Sequel Pro/Data/Favorites.plist"
+ln -sf $HOME"/Dropbox/Apps/SequelPro/Data/Favorites.plist" $HOME"/Library/Application Support/Sequel Pro/Data/Favorites.plist"
 
 # Sublime Text
 rm -rf $HOME"/Library/Application Support/Sublime Text 3/Installed Packages"
