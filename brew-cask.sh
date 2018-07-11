@@ -9,6 +9,7 @@ brew tap caskroom/versions
 # daily
 brew cask install dropbox
 brew cask install evernote
+brew cask install cloudapp
 
 # dev
 brew cask install ccmenu
