@@ -149,6 +149,7 @@ rm -rf $HOME"/Library/Application Support/Sequel Pro/Data/Favorites.plist"
 ln -sf $HOME"/Dropbox/Apps/SequelPro/Data/Favorites.plist" $HOME"/Library/Application Support/Sequel Pro/Data/Favorites.plist"
 
 # Sublime Text
+# https://packagecontrol.io/docs/syncing
 rm -rf $HOME"/Library/Application Support/Sublime Text 3/Packages/User"
 ln -sf $HOME"/Dropbox/Stevil/Workbench/sublime-text-3/User" $HOME"/Library/Application Support/Sublime Text 3/Packages"
 
