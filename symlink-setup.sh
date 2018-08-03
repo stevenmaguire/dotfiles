@@ -145,6 +145,7 @@ ln -sf $HOME"/Dropbox/Stevil/ssh/id_rsa.pub" $HOME"/.ssh/id_rsa.pub"
 chmod 400 $HOME"/.ssh/id_rsa"
 
 # gpg keys
+# https://help.github.com/articles/generating-a-new-gpg-key/
 # https://www.debuntu.org/how-to-importexport-gpg-key-pair/
 gpg --import $HOME"/Dropbox/Stevil/ssh/stevenmaguire_pub.gpg"
 gpg --allow-secret-key-import --import $HOME"/Dropbox/Stevil/ssh/stevenmaguire_sec.gpg"
