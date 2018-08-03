@@ -149,10 +149,8 @@ rm -rf $HOME"/Library/Application Support/Sequel Pro/Data/Favorites.plist"
 ln -sf $HOME"/Dropbox/Apps/SequelPro/Data/Favorites.plist" $HOME"/Library/Application Support/Sequel Pro/Data/Favorites.plist"
 
 # Sublime Text
-rm -rf $HOME"/Library/Application Support/Sublime Text 3/Installed Packages"
-ln -sf $HOME"/Dropbox/Stevil/Workbench/sublime-text-3/Installed Packages" $HOME"/Library/Application Support/Sublime Text 3"
-rm -rf $HOME"/Library/Application Support/Sublime Text 3/Packages"
-ln -sf $HOME"/Dropbox/Stevil/Workbench/sublime-text-3/Packages" $HOME"/Library/Application Support/Sublime Text 3"
+rm -rf $HOME"/Library/Application Support/Sublime Text 3/Packages/User"
+ln -sf $HOME"/Dropbox/Stevil/Workbench/sublime-text-3/User" $HOME"/Library/Application Support/Sublime Text 3/Packages"
 
 ##################################################
 # Symlinking all the things
