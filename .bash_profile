@@ -10,6 +10,7 @@ export PATH="$(brew --prefix)/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
 # GPG Config
+# https://github.com/keybase/keybase-issues/issues/2798
 export GPG_TTY=$(tty)
 
 # Load ~/.extra, ~/.bash_prompt, ~/.exports, ~/.aliases and ~/.functions

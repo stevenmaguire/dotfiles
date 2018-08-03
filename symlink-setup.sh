@@ -144,6 +144,11 @@ ln -sf $HOME"/Dropbox/Stevil/ssh/id_rsa" $HOME"/.ssh/id_rsa"
 ln -sf $HOME"/Dropbox/Stevil/ssh/id_rsa.pub" $HOME"/.ssh/id_rsa.pub"
 chmod 400 $HOME"/.ssh/id_rsa"
 
+# gpg keys
+# https://www.debuntu.org/how-to-importexport-gpg-key-pair/
+gpg --import $HOME"/Dropbox/Stevil/ssh/stevenmaguire_pub.gpg"
+gpg --allow-secret-key-import --import $HOME"/Dropbox/Stevil/ssh/stevenmaguire_sec.gpg"
+
 # Sequel Pro
 rm -rf $HOME"/Library/Application Support/Sequel Pro/Data/Favorites.plist"
 ln -sf $HOME"/Dropbox/Apps/SequelPro/Data/Favorites.plist" $HOME"/Library/Application Support/Sequel Pro/Data/Favorites.plist"
