@@ -1,7 +1,6 @@
 # homebrew basics
 export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:~/bin:$PATH
 
-
 # Composer binaries
 export PATH=~/.composer/vendor/bin:$PATH
 
@@ -9,6 +8,9 @@ export PATH=~/.composer/vendor/bin:$PATH
 export RBENV_ROOT="$(brew --prefix)/var/rbenv"
 export PATH="$(brew --prefix)/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+# GPG Config
+export GPG_TTY=$(tty)
 
 # Load ~/.extra, ~/.bash_prompt, ~/.exports, ~/.aliases and ~/.functions
 # ~/.extra can be used for settings you don’t want to commit

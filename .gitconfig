@@ -80,3 +80,6 @@
 [user]
 	name = Steven Maguire
 	email = stevenmaguire@gmail.com
+	signingkey = A162FE98CFBAD337
+[commit]
+	gpgsign = true
