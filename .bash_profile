@@ -4,6 +4,9 @@ export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:~/bin:$PATH
 # Composer binaries
 export PATH=~/.composer/vendor/bin:$PATH
 
+# Python binaries
+export PATH=$(python -m site --user-base)/bin:$PATH
+
 # Ruby env
 export RBENV_ROOT="$(brew --prefix)/var/rbenv"
 export PATH="$(brew --prefix)/.rbenv/bin:$PATH"
