@@ -46,6 +46,7 @@ brew install awscli
 brew install s3cmd
 brew install gpg
 brew install z
+brew install docker
 
 # Remove outdated versions from the cellar
 brew cleanup
