@@ -17,6 +17,7 @@ brew cask install postico
 brew cask install postman
 brew cask install sequel-pro
 brew cask install sublime-text
+brew cask install docker
 
 # browsers
 brew cask install google-chrome
