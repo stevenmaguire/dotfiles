@@ -5,6 +5,8 @@ brew install ruby-build
 
 # https://www.ruby-lang.org/en/downloads/
 
+eval "$(rbenv init -)"
+
 declare -a ruby_versions=(
     '2.2.9'
     '2.3.4'
