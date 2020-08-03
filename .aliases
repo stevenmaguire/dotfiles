@@ -33,6 +33,9 @@ alias sphp='brew-php-switcher'
 # ssh key
 alias copykey="pbcopy < ~/.ssh/id_rsa.pub && echo \"copied!\""
 
+# ssh key
+alias shrug="echo '¯\_(ツ)_/¯' | pbcopy && echo \"copied! ¯\_(ツ)_/¯\""
+
 # history
 alias h=history
 
