@@ -42,7 +42,8 @@ declare -r php_version_json='[
     {"version": "7.0", "packages": []},
     {"version": "7.1", "packages": []},
     {"version": "7.2", "packages": []},
-    {"version": "7.3", "packages": ["xdebug-beta","apcu-5.1.17"]}
+    {"version": "7.3", "packages": ["xdebug-beta","apcu-5.1.17"]},
+    {"version": "7.4", "packages": ["xdebug-beta","apcu-5.1.17"]}
 ]'
 
 #------------------------------
@@ -57,6 +58,7 @@ echo ${php_version_json} | jq -c '.[]' | while read php; do
     # We will want to update the PHP INI config file to include
     # our current timezone to avoid any issues running locally.
     sudo gsed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" "$(brew --prefix)/etc/php/$version/php.ini"
+    sudo gsed -i "s|memory_limit = 128M|memory_limit = 2G|g" "$(brew --prefix)/etc/php/$version/php.ini"
 done
 
 #------------------------------
