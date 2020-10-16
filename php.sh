@@ -19,15 +19,25 @@ function gettimezone() {
 #------------------------------
 
 # Install PHP
+brew tap homebrew/core
+
+##
+# Homebrew's policy seems to suggest that once an upstream package is EOL
+# it will no longer support it. Just is the case with PHP 5.6 and 7.0. Some
+# generous soul has offered to keep EOL formulae alive via a new tap...
+# https://github.com/Homebrew/homebrew-core/pull/35679#issuecomment-452086030
 brew tap exolnet/homebrew-deprecated
 
 brew install brew-php-switcher
 brew install jq
 
-# {"version": "5.6", "packages": ["xdebug-2.5.5","apcu-4.0.8"]},
-
+##
+# You can use this JSON string to define php versions and PECL packages
+# that should be installed for each:
+#   {"version": "5.6", "packages": ["xdebug-2.5.5"]},
+#   {"version": "7.0", "packages": ["xdebug","apcu-5.1.17"]},
 declare -r php_version_json='[
-
+    {"version": "5.6", "packages": []},
     {"version": "7.0", "packages": ["xdebug","apcu-5.1.11"]},
     {"version": "7.1", "packages": ["xdebug","apcu-5.1.11"]},
     {"version": "7.2", "packages": ["xdebug","apcu-5.1.11"]},
@@ -49,18 +59,23 @@ done
 #------------------------------
 # Install PHP Packages
 #------------------------------
+# - check the php.ini, that you not have xdebug.so for the
+#   values extension= and zend_extension=.
 echo ${php_version_json} | jq -c '.[]' | while read php; do
     version=$(echo ${php} | jq -r '.version')
     packages=$(echo ${php} | jq -r '.packages')
 
-    brew-php-switcher ${version}
-
     echo "Installing PHP Packages for Version $version"
+
+    brew-php-switcher ${version}
 
     echo ${packages} | jq -r '.[]' | while read package; do
         echo "Installing PHP Pacakage $package"
         pecl install ${package}
     done
+
+    # Let's remove duplicate directives from version specific php.ini
+    awk '!seen[$0]++' "$(brew --prefix)/etc/php/$version/php.ini" > tmp && mv tmp "$(brew --prefix)/etc/php/$version/php.ini"
 done
 
 
@@ -70,7 +85,8 @@ done
 echo ${php_version_json} | jq -c '.[]' | while read php; do
     version=$(echo ${php} | jq -r '.version')
 
-    sudo sed -i '' "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" "$(brew --prefix)/etc/php/$version/php.ini"
+    sudo gsed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" "$(brew --prefix)/etc/php/$version/php.ini"
+    sudo gsed -i "s|memory_limit = 128M|memory_limit = 2G|g" "$(brew --prefix)/etc/php/$version/php.ini"
     sudo awk '!seen[$0]++' "$(brew --prefix)/etc/php/${version}/php.ini" > "$(brew --prefix)/etc/php/${version}/php.ini"
 done
 

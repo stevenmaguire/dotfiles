@@ -19,29 +19,30 @@ brew install coreutils
 brew install moreutils
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed
 brew install findutils
-# Install GNU `sed`, overwriting the built-in `sed`
-brew install gnu-sed --with-default-names
+# Install GNU `sed`
+brew install gnu-sed
 # Install dock utils
 brew install dockutil
 
 # Install wget with IRI support
-brew install wget --with-iri
+brew install wget
 
 # Install more recent versions of some OS X tools
 brew install contacts
 brew install grep
 brew install screen
-brew install vim --override-system-vi
+brew install vim
 
 # Install other useful binaries
+brew tap heroku/brew && brew install heroku
 brew install ack
 brew install git
-brew install imagemagick --with-webp
+brew install imagemagick
 brew install pv
 brew install rename
 brew install tree
 brew install zopfli
-brew install ffmpeg --with-libvpx
+brew install ffmpeg
 brew install awscli
 brew install s3cmd
 brew install gpg
