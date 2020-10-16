@@ -11,7 +11,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 function gettimezone() {
     TZ_STRING="$(sudo systemsetup -gettimezone)"
 
-    echo ${TZ_STRING/Time\ Zone\:/}
+    echo ${TZ_STRING/Time\ Zone\:/} | sed 's/\//\\\//g'
 }
 
 #------------------------------
@@ -19,16 +19,20 @@ function gettimezone() {
 #------------------------------
 
 # Install PHP
-brew tap homebrew/core
+brew tap exolnet/homebrew-deprecated
 
 brew install brew-php-switcher
 brew install jq
 
+# {"version": "5.6", "packages": ["xdebug-2.5.5","apcu-4.0.8"]},
+
 declare -r php_version_json='[
-    {"version": "5.6", "packages": ["xdebug-2.5.5","apcu-4.0.8"]},
+
     {"version": "7.0", "packages": ["xdebug","apcu-5.1.11"]},
     {"version": "7.1", "packages": ["xdebug","apcu-5.1.11"]},
-    {"version": "7.2", "packages": ["xdebug","apcu-5.1.11"]}
+    {"version": "7.2", "packages": ["xdebug","apcu-5.1.11"]},
+    {"version": "7.3", "packages": ["xdebug","apcu-5.1.19"]},
+    {"version": "7.4", "packages": ["xdebug","apcu-5.1.19"]}
 ]'
 
 #------------------------------
@@ -39,8 +43,7 @@ echo ${php_version_json} | jq -c '.[]' | while read php; do
 
     echo "Installing PHP Version $version"
 
-    $(brew install php@$version)
-    sudo sed -i "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" "$(brew --prefix)/etc/php/$version/php.ini"
+    $(brew reinstall php@$version)
 done
 
 #------------------------------
@@ -60,10 +63,21 @@ echo ${php_version_json} | jq -c '.[]' | while read php; do
     done
 done
 
+
 #------------------------------
-# Use PHP 7.0
+# Clean up php.ini
 #------------------------------
-brew-php-switcher 7.0
+echo ${php_version_json} | jq -c '.[]' | while read php; do
+    version=$(echo ${php} | jq -r '.version')
+
+    sudo sed -i '' "s|;date.timezone =|date.timezone = \"$(gettimezone)\"|g" "$(brew --prefix)/etc/php/$version/php.ini"
+    sudo awk '!seen[$0]++' "$(brew --prefix)/etc/php/${version}/php.ini" > "$(brew --prefix)/etc/php/${version}/php.ini"
+done
+
+#------------------------------
+# Use PHP 7.3
+#------------------------------
+brew-php-switcher 7.3
 
 #------------------------------
 # Install composer, and two tools (assuming the symlinks haven't run yet)

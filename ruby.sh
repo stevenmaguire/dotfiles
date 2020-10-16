@@ -6,7 +6,6 @@ brew install ruby-build
 # https://www.ruby-lang.org/en/downloads/
 
 declare -a ruby_versions=(
-    '2.2.9'
     '2.3.4'
     '2.3.6'
     '2.4.3'
@@ -20,3 +19,5 @@ for i in "${ruby_versions[@]}"; do
 done
 
 rbenv rehash
+
+gem update --system

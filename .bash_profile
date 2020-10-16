@@ -1,5 +1,10 @@
+# initial paths
+base_path_parts=('/usr/local/bin' '/usr/local/sbin' '~/bin' '/usr/bin' '/bin' '/usr/sbin' '/sbin')
+export PATH=$(IFS=: ; echo "${base_path_parts[*]}")
+unset base_path_parts
+
 # homebrew basics
-export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:~/bin:$PATH
+export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH
 
 # Composer binaries
 export PATH=~/.composer/vendor/bin:$PATH
@@ -8,9 +13,9 @@ export PATH=~/.composer/vendor/bin:$PATH
 export PATH=$(python -m site --user-base)/bin:$PATH
 
 # Ruby env
-export RBENV_ROOT="$(brew --prefix)/var/rbenv"
-export PATH="$(brew --prefix)/.rbenv/bin:$PATH"
+# export RBENV_ROOT="$(brew --prefix)/var/rbenv"
 eval "$(rbenv init -)"
+export PATH="$(brew --prefix)/.rbenv/bin:$PATH"
 
 # GPG Config
 # https://github.com/keybase/keybase-issues/issues/2798
@@ -104,4 +109,4 @@ export NVM_DIR="$HOME/.nvm"
 #--------------------------------------
 # Cleanup PATH to remove duplicates
 #--------------------------------------
-export PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
+# export PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
