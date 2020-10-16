@@ -7,24 +7,16 @@
 # the latest is ¯\_(ツ)_/¯
 #
 # Homebrew has really screwed the pooch with their mysql
-# shenanigans.
+# shenanigans. So, don't bother trying to install the service
+# via homebrew - use the standalone installer instead
 #
-# brew install mysql
-# brew services stop mysql
-# MY_DAMN_PASSWORD="root"
-# CONF_FILE="$(brew --prefix)/etc/my.cnf"
-# touch $CONF_FILE
-# cat > $CONF_FILE <<EOF
-# # Default Homebrew MySQL server config
-# [mysqld]
-# # Only allow connections from localhost
-# bind-address = 127.0.0.1
-# default-authentication-plugin=mysql_native_password
-# EOF
-# brew services start mysql
-# sleep 3
-# mysql -u root -p$MY_DAMN_PASSWORD -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '$MY_DAMN_PASSWORD';"
-# brew services stop mysql
+# Download the package here: https://downloads.mysql.com/archives/community/
+# Installation instructions: https://dev.mysql.com/doc/mysql-osx-excerpt/5.7/en/osx-installation-pkg.html
+#
+# The standalone installer may include some other client binaries.
+# If not, you can install the client binaries as a keg-only (non symlinked)
+# package via homebrew.
+brew install mysql-client
 
 #------------------------------
 # PostgreSQL

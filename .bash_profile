@@ -3,6 +3,9 @@ base_path_parts=('/usr/local/bin' '/usr/local/sbin' '~/bin' '/usr/bin' '/bin' '/
 export PATH=$(IFS=: ; echo "${base_path_parts[*]}")
 unset base_path_parts
 
+# include mysql-client only binaries
+export PATH=/usr/local/opt/mysql-client/bin:$PATH
+
 # homebrew basics
 export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH
 
