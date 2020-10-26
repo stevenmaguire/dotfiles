@@ -73,9 +73,6 @@ echo ${php_version_json} | jq -c '.[]' | while read php; do
         echo "Installing PHP Pacakage $package"
         pecl install ${package}
     done
-
-    # Let's remove duplicate directives from version specific php.ini
-    awk '!seen[$0]++' "$(brew --prefix)/etc/php/$version/php.ini" > tmp && mv tmp "$(brew --prefix)/etc/php/$version/php.ini"
 done
 
 
