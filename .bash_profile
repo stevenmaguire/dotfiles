@@ -12,9 +12,6 @@ export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH
 # Composer binaries
 export PATH=~/.composer/vendor/bin:$PATH
 
-# Python binaries
-export PATH=$(python -m site --user-base)/bin:$PATH
-
 # Ruby env
 # export RBENV_ROOT="$(brew --prefix)/var/rbenv"
 eval "$(rbenv init -)"
@@ -109,7 +106,13 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
+# Python binaries
+if command -v pyenv 1>/dev/null 2>&1; then
+  export PATH=$(pyenv root)/shims:$PATH
+  eval "$(pyenv init -)"
+fi
+
 #--------------------------------------
 # Cleanup PATH to remove duplicates
 #--------------------------------------
-# export PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
+export PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
