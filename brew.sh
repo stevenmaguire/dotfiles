@@ -36,6 +36,8 @@ brew install cleanshot
 brew install dropbox
 brew install evernote
 brew install google-chrome
+brew install little-snitch
+brew install micro-snitch
 brew install spotify
 
 # dev
