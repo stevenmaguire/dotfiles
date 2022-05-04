@@ -1,33 +1,3 @@
-# Create a new directory and enter it
-function md() {
-    mkdir -p "$@" && cd "$@"
-}
-
-# find shorthand
-function f() {
-    find . -name "$1" 2>&1 | grep -v 'Permission denied'
-}
-
-# code linter
-function lint() {
-    if [ -z "$1" ]
-    then
-        PATH_TO_LINT="."
-    else
-        PATH_TO_LINT=$1
-    fi
-    phpcs --standard=PSR2 $PATH_TO_LINT
-}
-
-#view coverage report
-function coverage() {
-    REPORT="./build/coverage/html/index.html"
-    if [ -f $REPORT ]
-    then
-        open $REPORT
-    fi
-}
-
 # toggle hidden files
 function showhidden {
     if [ -n "$1" ] && [ "$1" = false ]; then
@@ -37,11 +7,7 @@ function showhidden {
     fi
 }
 
-# cd into whatever is the forefront Finder window.
-cdf() {  # short for cdfinder
-  cd "`osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)'`"
-}
-
+# open the IDE for a location
 code () {
   if [[ $# = 0 ]]
   then
@@ -52,73 +18,11 @@ code () {
   fi
 }
 
-function newtab {
-    if [[ $# -gt 0 ]]
-    then
-        osascript -e 'tell application "Terminal"
-            activate
-            tell application "System Events" to keystroke "t" using command down
-            do script "'"$1"'" in window 1
-        end tell'
-    fi
-}
+# get the machines timezone
+function gettimezone() {
+    TZ_STRING="$(sudo systemsetup -gettimezone)"
 
-# Beanstalkd
-function beanstalkd-start {
-    newtab "beanstalkd"
-}
-
-# Elastic Search
-function elasticsearch-start {
-    newtab "elasticsearch --config=/Users/steven/.homebrew/opt/elasticsearch/config/elasticsearch.yml"
-}
-
-function elasticsearch-plugin-install {
-    if [[ $# -gt 0 ]]
-    then
-        ~/.homebrew/opt/elasticsearch/bin/plugin -install "$1"
-    fi
-}
-
-function elasticsearch-plugin-uninstall {
-    if [[ $# -gt 0 ]]
-    then
-        ~/.homebrew/opt/elasticsearch/bin/plugin --remove "$1"
-    fi
-}
-
-# Start an HTTP server from a directory, optionally specifying the port
-function server() {
-    local port="${1:-8000}"
-    open "http://localhost:${port}/"
-    # Set the default Content-Type to `text/plain` instead of `application/octet-stream`
-    # And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
-    python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port"
-}
-
-
-# Copy w/ progress
-cp_p () {
-  rsync -WavP --human-readable --progress $1 $2
-}
-
-# Syntax-highlight JSON strings or files
-function json() {
-    if [ -p /dev/stdin ]; then
-        # piping, e.g. `echo '{"foo":42}' | json`
-        python -mjson.tool | pygmentize -l javascript
-    else
-        # e.g. `json '{"foo":42}'`
-        python -mjson.tool <<< "$*" | pygmentize -l javascript
-    fi
-}
-
-# get gzipped size
-function gz() {
-    echo "orig size    (bytes): "
-    cat "$1" | wc -c
-    echo "gzipped size (bytes): "
-    gzip -c "$1" | wc -c
+    echo ${TZ_STRING/Time\ Zone\:/} | sed 's/\//\\\//g'
 }
 
 # whois a domain or a URL
@@ -135,130 +39,3 @@ function whois() {
     /usr/bin/whois -h whois.internic.net $domain | sed '/NOTICE:/q'
 }
 
-
-# Extract archives - use: extract <file>
-# Based on http://dotfiles.org/~pseup/.bashrc
-function extract() {
-    if [ -f "$1" ] ; then
-        local filename=$(basename "$1")
-        local foldername="${filename%%.*}"
-        local fullpath=`perl -e 'use Cwd "abs_path";print abs_path(shift)' "$1"`
-        local didfolderexist=false
-        if [ -d "$foldername" ]; then
-            didfolderexist=true
-            read -p "$foldername already exists, do you want to overwrite it? (y/n) " -n 1
-            echo
-            if [[ $REPLY =~ ^[Nn]$ ]]; then
-                return
-            fi
-        fi
-        mkdir -p "$foldername" && cd "$foldername"
-        case $1 in
-            *.tar.bz2) tar xjf "$fullpath" ;;
-            *.tar.gz) tar xzf "$fullpath" ;;
-            *.tar.xz) tar Jxvf "$fullpath" ;;
-            *.tar.Z) tar xzf "$fullpath" ;;
-            *.tar) tar xf "$fullpath" ;;
-            *.taz) tar xzf "$fullpath" ;;
-            *.tb2) tar xjf "$fullpath" ;;
-            *.tbz) tar xjf "$fullpath" ;;
-            *.tbz2) tar xjf "$fullpath" ;;
-            *.tgz) tar xzf "$fullpath" ;;
-            *.txz) tar Jxvf "$fullpath" ;;
-            *.zip) unzip "$fullpath" ;;
-            *) echo "'$1' cannot be extracted via extract()" && cd .. && ! $didfolderexist && rm -r "$foldername" ;;
-        esac
-    else
-        echo "'$1' is not a valid file"
-    fi
-}
-
-# who is using the laptop's iSight camera?
-camerausedby() {
-    echo "Checking to see who is using the iSight camera… 📷"
-    usedby=$(lsof | grep -w "AppleCamera\|USBVDC\|iSight" | awk '{printf $2"\n"}' | xargs ps)
-    echo -e "Recent camera uses:\n$usedby"
-}
-
-# animated gifs from any video
-# from alex sexton   gist.github.com/SlexAxton/4989674
-gifify() {
-  if [[ -n "$1" ]]; then
-    if [[ $2 == '--good' ]]; then
-      ffmpeg -i $1 -r 10 -vcodec png out-static-%05d.png
-      time convert -verbose +dither -layers Optimize -resize 900x900\> out-static*.png  GIF:- | gifsicle --colors 128 --delay=5 --loop --optimize=3 --multifile - > $1.gif
-      rm out-static*.png
-    else
-      ffmpeg -i $1 -s 600x400 -pix_fmt rgb24 -r 10 -f gif - | gifsicle --optimize=3 --delay=3 > $1.gif
-    fi
-  else
-    echo "proper usage: gifify <input_movie.mov>. You DO need to include extension."
-  fi
-}
-
-# turn that video into webm.
-# brew reinstall ffmpeg --with-libvpx
-webmify(){
-    ffmpeg -i $1 -vcodec libvpx -acodec libvorbis -isync -copyts -aq 80 -threads 3 -qmax 30 -y $2 $1.webm
-}
-
-#------------------------------------------
-# Turn those gifs in tweets into videos
-# see: https://gist.github.com/brianloveswords/7534169715b5750a892cddcf54c2aa0e
-#------------------------------------------
-video-url-from-tweet() {
-    if [ "$1" ]; then
-        url=$1
-    else
-        echo "Must provide a url"
-        return 1
-    fi
-
-    curl --silent $url |\
-        # should find the <meta> tag with content="<thumbnail url>"
-        (grep -m1 "tweet_video_thumb" ||\
-          echo "Could not find video" && return 1) |\
-
-        # from: <meta property="og:image" content="https://pbs.twimg.com/tweet_video_thumb/xxxxxxxxxx.jpg">
-        # to: https://pbs.twimg.com/tweet_video_thumb/xxxxxxxxxx.jpg
-        cut -d '"' -f 4 |\
-
-        # from: https://pbs.twimg.com/tweet_video_thumb/xxxxxxxxxx.jpg
-        # to: https://video.twimg.com/tweet_video/xxxxxxxxxx.mp4
-        sed 's/.jpg/.mp4/g' |\
-        sed 's/pbs.twimg.com\/tweet_video_thumb/video.twimg.com\/tweet_video/g'
-}
-video-from-tweet() {
-    if [ "$1" ]; then
-        url=$1
-    else
-        echo "Must provide a url"
-        return 1
-    fi
-    curl $(video-url-from-tweet $url)
-}
-video-to-gif() {
-    # derived from https://engineering.giphy.com/how-to-make-gifs-with-ffmpeg/
-    if [ "$2" ]; then
-        input=$1
-        output=$2
-    else
-        echo "Must provide an input file and output file"
-        return 1
-    fi
-
-    ffmpeg -i $input \
-           -filter_complex "[0:v] split [a][b];[a] palettegen [p];[b][p] paletteuse" \
-           -f gif \
-           $output
-}
-gif-from-tweet() {
-    if [ "$2" ]; then
-        url=$1
-        output=$2
-    else
-        echo "Must provide a url and an output filename"
-        return 1
-    fi
-    video-from-tweet $url | video-to-gif - $output
-}

@@ -3,21 +3,15 @@
 # this symlinks all the dotfiles (and .vim/) to ~/
 # it also symlinks ~/bin for easy updating
 
-
 # this is a messy edit of alrra's nice work here:
 #   https://raw.githubusercontent.com/alrra/dotfiles/master/os/create_symbolic_links.sh
 #   it should and needs to be improved to be less of a hack.
 
-
-
 # jump down to line ~140 for the start.
-
-
 
 #
 # utils !!!
 #
-
 
 answer_is_yes() {
     [[ "$REPLY" =~ ^[Yy]$ ]] \
@@ -150,14 +144,14 @@ chmod 400 $HOME"/.ssh/id_rsa"
 gpg --import $HOME"/Dropbox/Stevil/ssh/stevenmaguire_pub.gpg"
 gpg --allow-secret-key-import --import $HOME"/Dropbox/Stevil/ssh/stevenmaguire_sec.gpg"
 
-# Sequel Pro
-rm -rf $HOME"/Library/Application Support/Sequel Pro/Data/Favorites.plist"
-ln -sf $HOME"/Dropbox/Apps/SequelPro/Data/Favorites.plist" $HOME"/Library/Application Support/Sequel Pro/Data/Favorites.plist"
+# # Sequel Pro
+# rm -rf $HOME"/Library/Application Support/Sequel Pro/Data/Favorites.plist"
+# ln -sf $HOME"/Dropbox/Apps/SequelPro/Data/Favorites.plist" $HOME"/Library/Application Support/Sequel Pro/Data/Favorites.plist"
 
-# Sublime Text
-# https://packagecontrol.io/docs/syncing
-rm -rf $HOME"/Library/Application Support/Sublime Text 3/Packages/User"
-ln -sf $HOME"/Dropbox/Stevil/Workbench/sublime-text-3/User" $HOME"/Library/Application Support/Sublime Text 3/Packages"
+# # Sublime Text
+# # https://packagecontrol.io/docs/syncing
+# rm -rf $HOME"/Library/Application Support/Sublime Text 3/Packages/User"
+# ln -sf $HOME"/Dropbox/Stevil/Workbench/sublime-text-3/User" $HOME"/Library/Application Support/Sublime Text 3/Packages"
 
 ##################################################
 # Symlinking all the things

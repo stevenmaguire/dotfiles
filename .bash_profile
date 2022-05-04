@@ -1,26 +1,3 @@
-# initial paths
-base_path_parts=('/usr/local/bin' '/usr/local/sbin' '~/bin' '/usr/bin' '/bin' '/usr/sbin' '/sbin')
-export PATH=$(IFS=: ; echo "${base_path_parts[*]}")
-unset base_path_parts
-
-# include mysql-client only binaries
-export PATH=/usr/local/opt/mysql-client/bin:$PATH
-
-# homebrew basics
-export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH
-
-# Composer binaries
-export PATH=~/.composer/vendor/bin:$PATH
-
-# Ruby env
-# export RBENV_ROOT="$(brew --prefix)/var/rbenv"
-eval "$(rbenv init -)"
-export PATH="$(brew --prefix)/.rbenv/bin:$PATH"
-
-# GPG Config
-# https://github.com/keybase/keybase-issues/issues/2798
-export GPG_TTY=$(tty)
-
 # Load ~/.extra, ~/.bash_prompt, ~/.exports, ~/.aliases and ~/.functions
 # ~/.extra can be used for settings you don’t want to commit
 for file in ~/.{extra,bash_prompt,exports,aliases,functions}; do
@@ -38,26 +15,6 @@ if [ "$TERM" != dumb ] && [ -n "$GRC" ]
             alias "$app"='colourify '$app
         done
 fi
-
-##
-## gotta tune that bash_history…
-##
-
-# timestamps for later analysis. www.debian-administration.org/users/rossen/weblog/1
-export HISTTIMEFORMAT='%F %T '
-
-# keep history up to date, across sessions, in realtime
-#  http://unix.stackexchange.com/a/48113
-export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
-export HISTSIZE=100000                   # big big history (default is 500)
-export HISTFILESIZE=$HISTSIZE            # big big history
-shopt -s histappend;                     # append to history, don't overwrite it
-
-# Save and reload the history after each command finishes
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
-
-# ^ the only downside with this is [up] on the readline will go over all history not just this bash session.
-
 
 ##
 ## Completion…
@@ -99,20 +56,3 @@ shopt -s cdspell;
 if which brew > /dev/null && [ -f "$(brew --prefix)/etc/profile.d/z.sh" ]; then
     . "$(brew --prefix)/etc/profile.d/z.sh";
 fi
-
-##
-## hooking in other apps…
-##
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-
-# Python binaries
-if command -v pyenv 1>/dev/null 2>&1; then
-  export PATH=$(pyenv root)/shims:$PATH
-  eval "$(pyenv init -)"
-fi
-
-#--------------------------------------
-# Cleanup PATH to remove duplicates
-#--------------------------------------
-export PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
