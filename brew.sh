@@ -34,24 +34,21 @@ brew install z
 brew install 1password
 brew install cleanshot
 brew install dropbox
-brew install evernote
 brew install google-chrome
-brew install little-snitch
-brew install micro-snitch
 brew install spotify
 
 # dev
+brew install appzapper
 brew install awscli
 brew install dbngin
 brew tap heroku/brew && brew install heroku
+brew install little-snitch
+brew install micro-snitch
 brew install postman
 brew install sublime-text
 brew install tableplus
+brew install transmit
 brew install tuple
-
-# less often
-brew cask install appzapper
-brew cask install transmit
 
 # Remove outdated versions from the cellar
 brew cleanup
