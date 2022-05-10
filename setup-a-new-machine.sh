@@ -23,3 +23,6 @@ xcode-select --install
 
 # Setup symlinks to home directory
 ./symlink-setup.sh
+
+# Setup SSH keys
+ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts

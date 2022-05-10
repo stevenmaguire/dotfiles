@@ -1,13 +1,14 @@
 ########################################################
 # initial paths
 ########################################################
-base_path_parts=('/usr/local/bin' '/usr/local/sbin' '~/bin' '/usr/bin' '/bin' '/usr/sbin' '/sbin')
+base_path_parts=('/opt/homebrew/bin' '/usr/local/bin' '/usr/local/sbin' '~/bin' '/usr/bin' '/bin' '/usr/sbin' '/sbin')
 export PATH=$(IFS=: ; echo "${base_path_parts[*]}")
 unset base_path_parts
 
 ########################################################
 # homebrew basics
 ########################################################
+eval "$(/opt/homebrew/bin/brew shellenv)"
 export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH
 export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
 
