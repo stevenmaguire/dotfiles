@@ -24,17 +24,20 @@ alias brwe=brew
 alias please=sudo
 alias hosts='sudo $EDITOR /etc/hosts'
 
-# composer
+# composer & php
 alias composer-update='sudo php ~/bin/composer self-update'
-
-# switch php versions
-alias sphp='brew-php-switcher'
+alias phpcs='vendor/bin/phpcs'
+alias phpunit='vendor/bin/phpunit'
+alias vapor='php vendor/bin/vapor'
 
 # ssh key
 alias copykey="pbcopy < ~/.ssh/id_rsa.pub && echo \"copied!\""
 
-# ssh key
+# some emojis
+alias derp="echo '¯\(◉◡◔)/¯' | pbcopy && echo \"copied! ¯\(◉◡◔)/¯\""
+alias sad="echo 'ʘ︵ʘ' | pbcopy && echo \"copied! ʘ︵ʘ\""
 alias shrug="echo '¯\_(ツ)_/¯' | pbcopy && echo \"copied! ¯\_(ツ)_/¯\""
+alias tableflip="echo '(╯°□°)╯︵ ┻━┻' | pbcopy && echo \"copied! (╯°□°)╯︵ ┻━┻\""
 
 # history
 alias h=history
