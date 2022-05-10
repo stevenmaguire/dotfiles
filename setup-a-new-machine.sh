@@ -29,3 +29,6 @@ softwareupdate --install-rosetta --agree-to-license
 
 # Setup SSH keys
 ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+
+# Setup sublime text
+./sublime.sh
