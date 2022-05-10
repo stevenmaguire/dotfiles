@@ -18,7 +18,7 @@ brew install coreutils
 # Collection of tools that nobody wrote when UNIX was young
 brew install moreutils
 # Install dock utils
-brew install dockutil
+brew tap lotyp/homebrew-formulae && brew install lotyp/formulae/dockutil
 
 # Install other useful binaries
 brew install git
