@@ -41,7 +41,6 @@ brew install spotify
 brew install appzapper
 brew install awscli
 brew install dbngin
-brew tap heroku/brew && brew install heroku
 brew install little-snitch
 brew install micro-snitch
 brew install postman
@@ -49,6 +48,8 @@ brew install sublime-text
 brew install tableplus
 brew install transmit
 brew install tuple
+# Heroku CLI currently requires Rosetta on M1 arch - make sure it is installed!
+brew tap heroku/brew && brew install heroku
 
 # Remove outdated versions from the cellar
 brew cleanup
