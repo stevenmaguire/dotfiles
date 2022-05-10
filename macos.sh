@@ -65,6 +65,7 @@ if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
       'Google Chrome'
       'Sublime Text'
       'DBngin'
+      'TablePlus'
       'Transmit'
       '1Password'
     )

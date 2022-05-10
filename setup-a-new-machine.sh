@@ -6,6 +6,9 @@
 # Xcode - Download Xcode and command line tools via App Store
 xcode-select --install
 
+# Install Rosetta (to support Intel binaries)
+softwareupdate --install-rosetta --agree-to-license
+
 # Install all the things
 ./brew.sh
 
