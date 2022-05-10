@@ -41,6 +41,7 @@ brew install spotify
 brew install appzapper
 brew install awscli
 brew install dbngin
+brew install --cask docker
 brew install little-snitch
 brew install micro-snitch
 brew install postman
