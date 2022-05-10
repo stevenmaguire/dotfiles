@@ -9,3 +9,4 @@ brew install php
 brew install composer
 composer global require laravel/installer
 composer global require laravel/valet
+valet install
