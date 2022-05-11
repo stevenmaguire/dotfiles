@@ -38,7 +38,6 @@ brew install google-chrome
 brew install spotify
 
 # dev
-brew install appzapper
 brew install awscli
 brew install dbngin
 brew install --cask docker
