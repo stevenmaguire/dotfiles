@@ -18,7 +18,7 @@ echo $BASH_VERSION # should be 4.x not the old 3.2.X
 
 # regular bash-completion package is held back to an older release, so we get latest from versions.
 #   github.com/Homebrew/homebrew/blob/master/Library/Formula/bash-completion.rb#L3-L4
-brew install bash-completion2
+brew install bash-completion@2
 
 # generic colouriser  http://kassiopeia.juls.savba.sk/~garabik/software/grc/
 brew install grc

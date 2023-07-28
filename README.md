@@ -18,7 +18,6 @@
 
 * commit/push changes you want.
 
-
 ## my favorite parts.
 
 ### [`.aliases`](https://github.com/stevenmaguire/dotfiles/blob/master/.aliases) and [`.functions`](https://github.com/stevenmaguire/dotfiles/blob/master/.functions)
@@ -70,7 +69,7 @@ Lastly, I use `open .` to open Finder from this path. (That's just available nor
 * `setup-a-new-machine.sh` - random apps i need installed
 * `symlink-setup.sh`  - sets up symlinks for all dotfiles and vim config.
 * `macos.sh` - run on a fresh macos setup
-* `brew.sh` & `brew-cask.sh` - homebrew initialization
+* `brew.sh`- homebrew initialization
 
 #### git, brah
 * `.git`
@@ -100,7 +99,6 @@ PATH=$PATH:~/code/git-friendly
 
 export PATH
 ```
-
 
 ### Sensible OS X defaults
 
