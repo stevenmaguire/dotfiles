@@ -11,6 +11,7 @@ softwareupdate --install-rosetta --agree-to-license
 
 # Install all the things
 ./brew.sh
+./volta.sh
 
 # Bash
 ./bash.sh

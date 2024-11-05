@@ -136,6 +136,8 @@ print_success() {
 mkdir -p $HOME"/.ssh"
 ln -sf $HOME"/Dropbox/Stevil/ssh/id_rsa" $HOME"/.ssh/id_rsa"
 ln -sf $HOME"/Dropbox/Stevil/ssh/id_rsa.pub" $HOME"/.ssh/id_rsa.pub"
+ln -sf $HOME"/Dropbox/Stevil/ssh/id_rsa" $HOME"/.ssh/id_4096_rsa"
+ln -sf $HOME"/Dropbox/Stevil/ssh/id_rsa.pub" $HOME"/.ssh/id_4096_rsa.pub"
 chmod 400 $HOME"/.ssh/id_rsa"
 
 # gpg keys
