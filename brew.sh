@@ -28,26 +28,31 @@ brew install vim
 brew install z
 
 ########################################################
-## Install native apps
+## Install other tools
 ########################################################
-# daily
-brew install 1password
-brew install cleanshot
-brew install dropbox
-brew install google-chrome
-brew install spotify
-
-# dev
 brew install awscli
-brew install dbngin
-brew install --cask docker
+brew install 1password
+brew install google-chrome
 brew install little-snitch
 brew install micro-snitch
-brew install postman
-brew install sublime-text
+brew install microsoft-excel
 brew install tableplus
+brew install vlc
+brew install cleanshot
+brew install dropbox
+brew install microsoft-auto-update
+brew install ngrok
+brew install spotify
 brew install transmit
+brew install wireshark
+brew install dbngin
+brew install hoppscotch
+brew install mdrp
+brew install microsoft-edge
+brew install sublime-text
 brew install tuple
+brew install zoom
+
 # Heroku CLI currently requires Rosetta on M1 arch - make sure it is installed!
 brew tap heroku/brew && brew install heroku
 
