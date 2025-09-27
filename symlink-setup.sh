@@ -134,11 +134,15 @@ print_success() {
 
 # ssh keys
 mkdir -p $HOME"/.ssh"
+ln -sf $HOME"/Dropbox/Stevil/ssh/config" $HOME"/.ssh/config"
 ln -sf $HOME"/Dropbox/Stevil/ssh/id_rsa" $HOME"/.ssh/id_rsa"
 ln -sf $HOME"/Dropbox/Stevil/ssh/id_rsa.pub" $HOME"/.ssh/id_rsa.pub"
-ln -sf $HOME"/Dropbox/Stevil/ssh/id_rsa" $HOME"/.ssh/id_4096_rsa"
-ln -sf $HOME"/Dropbox/Stevil/ssh/id_rsa.pub" $HOME"/.ssh/id_4096_rsa.pub"
+ln -sf $HOME"/Dropbox/Stevil/ssh/id_4096_rsa" $HOME"/.ssh/id_4096_rsa"
+ln -sf $HOME"/Dropbox/Stevil/ssh/id_4096_rsa.pub" $HOME"/.ssh/id_4096_rsa.pub"
+ln -sf $HOME"/Dropbox/Stevil/ssh/knuckles_jumpbox_rsa" $HOME"/.ssh/knuckles_jumpbox_rsa"
 chmod 400 $HOME"/.ssh/id_rsa"
+chmod 400 $HOME"/.ssh/id_4096_rsa"
+chmod 400 $HOME"/.ssh/knuckles_jumpbox_rsa"
 
 # gpg keys
 # https://help.github.com/articles/generating-a-new-gpg-key/
